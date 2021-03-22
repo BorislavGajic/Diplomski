@@ -1,0 +1,52 @@
+<div class="panel-header panel-header-sm">
+</div>
+<html>
+<body>
+<!-- header -->
+<nav class="navbar">
+  <!--
+    <div class="navbar-brand">
+      <button class="navbar-item navbar-item-right">gfdgfdg</button>
+    </div>
+
+  -->
+  <a class="mat-button" (click)="logout()">Logout</a>
+</nav>
+
+<h1>Materijali na stanju</h1>
+<div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class=" text-primary">
+      <th>
+        Id magacina
+      </th>
+      <th>
+        Materijal
+      </th>
+      <th>
+        Brisanje
+      </th>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let stanje of stanja">
+        <tr>
+          <td>{{stanje.stanjeKey.mId}}</td>
+          <td>{{stanje.materijal.nazivMat}}</td>
+
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="delete(stanje)">Obrisi sa stanja</button>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Novo stanje</button>
+</div>

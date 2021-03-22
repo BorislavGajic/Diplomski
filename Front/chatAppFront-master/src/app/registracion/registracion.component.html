@@ -1,0 +1,37 @@
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="col-md-12 text-center">
+      <h1>Registracija</h1>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="korisnikForm" (ngSubmit)="onSubmit()">
+      <input type="text" formControlName="ime" class="form-control" id="ime" name="ime" placeholder="Ime">
+      <input type="text" formControlName="prezime" class="form-control" id="prezime" name="ime" placeholder="Prezime">
+      <input type="text" formControlName="jmbg" class="form-control" id="jmbg" name="jmbg" placeholder="Jmbg">
+      <input type="text" formControlName="tekuciRacun" class="form-control" id="tekuciRacun" name="tekuciRacun" placeholder="Tekuci racun">
+      <input type="text" formControlName="korisnickoIme" class="form-control" id="korisnickoIme" name="korisnickoIme" placeholder="Korisnicko ime">
+      <input type="text" formControlName="lozinka" class="form-control" id="lozinka" name="lozinka" placeholder="Lozinka">
+
+      <div>
+        <input id="Admin" type="radio" value="Admin" name="uloga" formControlName="uloga">
+        <label for="Admin">Admin</label>
+      </div>
+      <div>
+        <input id="Magacioner" type="radio" value="Magacioner" name="uloga" formControlName="uloga">
+        <label for="Magacioner">Magacioner</label>
+      </div>
+      <div>
+        <input id="Operater" type="radio" value="Operater" name="uloga" formControlName="uloga">
+        <label for="Operater">Operater</label>
+      </div>
+
+      <input type="submit" class="fadeIn fourth" value="Register">
+    </form>
+
+  </div>
+</div>

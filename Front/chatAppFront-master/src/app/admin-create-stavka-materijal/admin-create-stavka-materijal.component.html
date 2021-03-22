@@ -1,0 +1,28 @@
+<div class="panel-header panel-header-sm">
+</div>
+<body>
+<div class="card-body">
+  <h4 class="card-title"> Dodaj novi materijal</h4>
+
+  <form [formGroup]="StavkaMaterijalForm" (ngSubmit)="create()">
+    <div>
+      <mat-form-field >
+        <mat-label>Materijal</mat-label>
+        <mat-select formControlName="matId">
+          <mat-option id="matId"  *ngFor="let materijal of materijali" [value]="materijal.matId">{{materijal.nazivMat}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Dodaj materijal</button>
+  </form>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
+
+
+
+
+
+</div>
+</body>

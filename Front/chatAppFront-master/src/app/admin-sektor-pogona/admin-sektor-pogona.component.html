@@ -1,0 +1,72 @@
+<div class="panel-header panel-header-sm">
+</div>
+<html>
+<body>
+<!-- header -->
+<nav class="navbar">
+  <!--
+    <div class="navbar-brand">
+      <button class="navbar-item navbar-item-right">gfdgfdg</button>
+    </div>
+
+  -->
+  <a class="mat-button" (click)="logout()">Logout</a>
+</nav>
+
+<h1>Svi sektori pogona</h1>
+<div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class=" text-primary">
+      <th>
+        Id sektora pogona
+      </th>
+      <th>
+        Id pogona
+      </th>
+      <th>
+        Ime sektora pogona
+      </th>
+      <th>
+        Vrsta sektora pogona
+      </th>
+      <th>
+        Broj zaposlenih
+      </th>
+      <th>
+        Broj masina
+      </th>
+      <th>
+        Povrsina
+      </th>
+      <th>
+        Brisanje
+      </th>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let sp of sektoriPogona">
+        <tr>
+          <td>{{sp.spId}}</td>
+          <td>{{sp.pogonPId.pId}}</td>
+          <td>{{sp.nazivSp}}</td>
+          <td>{{sp.tipSp}}</td>
+          <td>{{sp.maxKolZap}}</td>
+          <td>{{sp.kolMasinaSp}}</td>
+          <td>{{sp.povrsina}}</td>
+
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="delete(sp)">Obrisi</button>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Novi sektor pogona</button>
+</div>

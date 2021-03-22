@@ -1,0 +1,48 @@
+<div class="panel-header panel-header-sm">
+</div>
+<body>
+<div class="card-body">
+  <h4 class="card-title"> Napravi sektor pogona</h4>
+
+  <form [formGroup]="SPForm" (ngSubmit)="create()">
+    <div>
+      <mat-form-field >
+        <mat-label>Pogoni</mat-label>
+        <mat-select formControlName="pogonPId">
+          <mat-option id="pogonPId"  *ngFor="let pogon of pogoni" [value]="pogon.pId">{{pogon.pId}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
+        <mat-label>Tip sektora pogona</mat-label>
+        <mat-select formControlName="tipSp">
+          <mat-option id="tipSp"  *ngFor="let tip of tipSP" [value]="tip">{{tip}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+    <input type="text" formControlName="nazivSp" id="nazivSp" placeholder="Naziv sektora pogona">
+    </div>
+    <div>
+    <input type="number" formControlName="maxKolZap" id="maxKolZap" nbInput min="1" max="50000"value="1"  placeholder="Max broj zaposlenih">
+    </div>
+    <div>
+      <input type="number" formControlName="kolMasinaSp" id="kolMasinaSp" nbInput min="1" max="50000"value="1"  placeholder="Broj masina">
+    </div>
+    <div>
+      <input type="number" formControlName="povrsina" id="povrsina" nbInput min="1" max="50000"value="1"  placeholder="Povrsina">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sacuvaj sektor pogona</button>
+  </form>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
+
+
+
+
+
+</div>
+</body>

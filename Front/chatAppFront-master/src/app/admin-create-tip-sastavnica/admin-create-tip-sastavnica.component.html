@@ -1,0 +1,27 @@
+<div class="panel-header panel-header-sm">
+</div>
+<body>
+<div class="card-body">
+  <h4 class="card-title"> Napravi tip sastavnica</h4>
+
+  <form [formGroup]="TipSastavnicaForm" (ngSubmit)="create()">
+
+    <div>
+      <div>
+        <label for="nazivTs">Naziv tipa sastavnica:  </label>
+      </div>
+      <div>
+        <input type="text" formControlName="nazivTs" id="nazivTs" placeholder="Naziv tipa sastavnica">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sacuvaj tip sastavnica</button>
+  </form>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
+
+
+
+
+
+</div>
+</body>

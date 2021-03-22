@@ -1,0 +1,256 @@
+<div class="panel-header panel-header-sm">
+</div>
+<html>
+<body>
+<!-- header -->
+<nav class="navbar">
+  <!--
+    <div class="navbar-brand">
+      <button class="navbar-item navbar-item-right">gfdgfdg</button>
+    </div>
+
+  -->
+  <a class="mat-button" (click)="logout()">Logout</a>
+</nav>
+
+<h1>Svi radni nalozi</h1>
+<div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class=" text-primary">
+      <th>
+        Id
+      </th>
+      <th>
+        Id pogona
+      </th>
+      <th>
+        Id kancelarije
+      </th>
+      <th>
+        Brisanje
+      </th>
+      <th>
+        Stavke
+      </th>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let radni_nalog of radniNalozi">
+        <tr>
+          <td>{{radni_nalog.rnId}}</td>
+          <td>{{radni_nalog.pogonPId.pId}}</td>
+          <td>{{radni_nalog.kancelarijaKaId.kaId}}</td>
+
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="delete(radni_nalog)">Obrisi radni nalog</button>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Stavke</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                <button ngbDropdownItem (click)="otvoriStavke(openCom, radni_nalog)">Prikazi stavke</button>
+                <button ngbDropdownItem (click)="dodajStavku(radni_nalog)">Nova stavka</button>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Novi radni nalog</button>
+</div>
+
+
+<ng-template #openCom let-modal windowClass="modal-dialog">
+  <div class="modal-header">
+    <h4 class="modal-title" class="text-right" id="modal-basic-title3">Stavke radnog naloga</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class=" text-primary">
+          <th>
+            Id stavke
+          </th>
+          <th>
+            Id radnog naloga
+          </th>
+          <th>
+            Kolicina
+          </th>
+          <th>
+            Naziv materijala
+          </th>
+          <th>
+            Obrisi
+          </th>
+          <th>
+            Stavke sastavnice
+          </th>
+          </thead>
+          <tbody>
+          <ng-container *ngFor="let stavkaRN of stavkeRN">
+            <tr>
+              <td>{{stavkaRN.stavka_rnKey.srnId}}</td>
+              <td>{{stavkaRN.rnId.rnId}}</td>
+              <td>{{stavkaRN.kolicinaRn}}</td>
+              <td>{{stavkaRN.matId.nazivMat}}</td>
+
+              <td>
+                <div ngbDropdown class="d-inline-block">
+                  <button class="btn btn-outline-primary" id="dropdownBasic44" ngbDropdownToggle>Obrisi</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic44">
+                    <button ngbDropdownItem (click)="delete1(stavkaRN)">Obrisi stavku</button>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div ngbDropdown class="d-inline-block">
+                  <button class="btn btn-outline-primary" id="dropdownBasic222" ngbDropdownToggle>Stavke sastavnice</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic222">
+                    <button ngbDropdownItem (click)="otvoriStavkeSas(openCom1, stavkaRN)">Prikazi stavke sastavnice</button>
+                    <button ngbDropdownItem (click)="dodajStavkuSas(stavkaRN)">Nova stavka sastavnice</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+
+
+<ng-template #openCom1 let-modal windowClass="modal-dialog">
+  <div class="modal-header">
+    <h4 class="modal-title" class="text-right" id="modal-basic-title33">Stavke sastavnice</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class=" text-primary">
+          <th>
+            Id sastavnice
+          </th>
+          <th>
+            Id stavke
+          </th>
+          <th>
+            Kolicina
+          </th>
+          <th>
+            Obrisi
+          </th>
+          <th>
+            Trebovanje
+          </th>
+          </thead>
+          <tbody>
+          <ng-container *ngFor="let stavkaSas of stavkeSas">
+            <tr>
+              <td>{{stavkaSas.stavka_sasKey.sId}}</td>
+              <td>{{stavkaSas.stavka_sasKey.ssId}}</td>
+              <td>{{stavkaSas.kolicinaSs}}</td>
+
+              <td>
+                <div ngbDropdown class="d-inline-block">
+                  <button class="btn btn-outline-primary" id="dropdownBasic441" ngbDropdownToggle>Obrisi</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic441">
+                    <button ngbDropdownItem (click)="delete1(stavkaSas)">Obrisi stavku</button>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div ngbDropdown class="d-inline-block">
+                  <button class="btn btn-outline-primary" id="dropdownBasic4441" ngbDropdownToggle>Trebovanje</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic4441">
+                    <button ngbDropdownItem (click)="prikaziTrebovano(openCom2, stavkaSas)">Prikazi trebovano</button>
+                    <button ngbDropdownItem (click)="dodajTrebovanje(stavkaSas)">Trebuj novo</button>
+                  </div>
+                </div>
+              </td>
+
+
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+
+<ng-template #openCom2 let-modal windowClass="modal-dialog">
+  <div class="modal-header">
+    <h4 class="modal-title" class="text-right" id="modal-basic-title333">Trebovani materijal sa stanja</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class=" text-primary">
+          <th>
+            Id magacina
+          </th>
+          <th>
+            Id materijala
+          </th>
+          </thead>
+          <tbody>
+          <ng-container *ngFor="let stanje of stanja">
+            <tr>
+              <td>{{stanje.stanjeKey.mId}}</td>
+              <td>{{stanje.materijal.nazivMat}}</td>
+
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+

@@ -1,0 +1,97 @@
+<div class="panel-header panel-header-sm">
+</div>
+<html>
+<body>
+<!-- header -->
+<nav class="navbar">
+  <!--
+    <div class="navbar-brand">
+      <button class="navbar-item navbar-item-right">gfdgfdg</button>
+    </div>
+
+  -->
+  <a class="mat-button" (click)="logout()">Logout</a>
+</nav>
+
+<h1>Sve kancelarije</h1>
+<div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class=" text-primary">
+      <th>
+        Id
+      </th>
+      <th>
+        Kolicina ormana
+      </th>
+      <th>
+        Kolicina racunara
+      </th>
+      <th>
+        Kolicina stolica
+      </th>
+      <th>
+        Kolicina stolova
+      </th>
+      <th>
+        Brisanje
+      </th>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let kancelarija of kancelarije">
+        <tr>
+          <td>{{kancelarija.kaId}}</td>
+          <td>{{kancelarija.kolOrmanaK}}</td>
+          <td>{{kancelarija.kolRacunara}}</td>
+          <td>{{kancelarija.kolStolicaK}}</td>
+          <td>{{kancelarija.kolStolovaK}}</td>
+
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="delete(kancelarija)">Obrisi</button>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-outline-primary" (click)="MakeVote(addVote)">Nova kancelarija</button>
+</div>
+
+
+
+<ng-template #addVote let-modal windowClass="modal-dialog">
+  <div class="modal-header">
+    <h4 class="modal-title" class="text-right" id="modal-basic-title4">Nova kancelarija</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+    <div class="card-body">
+
+      <form [formGroup]="KancelarijaForm" (ngSubmit)="create()">
+        <input type="number" formControlName="kol_ormana_k" id="kolOrmanaK" nbInput min="1" max="50"value="1"  placeholder="Kolicina ormana">
+        <input type="number" formControlName="kol_racunara" id="kolRacunara" nbInput min="1" max="50"value="1"  placeholder="Kolicina racunara">
+        <input type="number" formControlName="kol_stolica_k" id="kolStolicaK" nbInput min="1" max="50"value="1"  placeholder="Kolicina stolica">
+        <input type="number" formControlName="kol_stolova_k" id="kolStolovaK" nbInput min="1" max="50"value="1"  placeholder="Kolicina stolova">
+        <button type="submit" class="btn btn-primary">Kreiraj kancelariju</button>
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+

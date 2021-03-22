@@ -1,0 +1,36 @@
+<div class="panel-header panel-header-sm">
+</div>
+<body>
+<div class="card-body">
+  <h4 class="card-title"> Dodaj novi materijal na stanje</h4>
+
+  <form [formGroup]="StanjeForm" (ngSubmit)="create()">
+
+      <div>
+        <mat-form-field >
+          <mat-label>Materijal</mat-label>
+          <mat-select formControlName="matId">
+            <mat-option id="matId"  *ngFor="let materijal of materijali" [value]="materijal.matId">{{materijal.nazivMat}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field >
+          <mat-label>Magacin</mat-label>
+          <mat-select formControlName="mId">
+            <mat-option id="mId"  *ngFor="let magacin of magacini" [value]="magacin.mid">{{magacin.mid}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+    <button type="submit" class="btn btn-primary">Sacuvaj</button>
+  </form>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
+
+
+
+
+</div>
+</body>

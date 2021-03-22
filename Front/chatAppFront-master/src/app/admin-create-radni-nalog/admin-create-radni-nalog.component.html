@@ -1,0 +1,38 @@
+<div class="panel-header panel-header-sm">
+</div>
+<body>
+<div class="card-body">
+  <h4 class="card-title"> Napravi radni nalog</h4>
+
+  <form [formGroup]="RadniNalogForm" (ngSubmit)="create()">
+    <div>
+      <mat-form-field >
+        <mat-label>Pogon</mat-label>
+        <mat-select formControlName="pogonPId">
+          <mat-option id="pogonPId"  *ngFor="let pogon of pogoni" [value]="pogon.pId">{{pogon.pId}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
+        <mat-label>Kancelarija</mat-label>
+        <mat-select formControlName="kancelarijaKaId">
+          <mat-option id="kancelarijaKaId"  *ngFor="let kancelarija of kancelarije" [value]="kancelarija.kaId">{{kancelarija.kaId}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-primary">Sacuvaj radni nalog</button>
+  </form>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
+
+
+
+
+
+</div>
+</body>

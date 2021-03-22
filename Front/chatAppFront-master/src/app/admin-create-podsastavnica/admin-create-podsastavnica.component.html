@@ -1,0 +1,28 @@
+<div class="panel-header panel-header-sm">
+</div>
+<body>
+<div class="card-body">
+  <h4 class="card-title"> Dodaj podsastavnicu</h4>
+
+  <form [formGroup]="PodsastavnicaForm" (ngSubmit)="create()">
+    <div>
+      <mat-form-field >
+        <mat-label>Podsastavnica</mat-label>
+        <mat-select formControlName="sId">
+          <mat-option id="sId"  *ngFor="let sts of sastavniceStare" [value]="sts.sId">{{sts.sId}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Sacuvaj podsastavnicu</button>
+  </form>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
+
+
+
+
+
+</div>
+</body>

@@ -1,0 +1,28 @@
+<div class="panel-header panel-header-sm">
+</div>
+<body>
+<div class="card-body">
+  <h4 class="card-title"> Napravi sastavnicu</h4>
+
+  <form [formGroup]="SastavnicaForm" (ngSubmit)="create()">
+    <div>
+      <mat-form-field >
+        <mat-label>Tip sastavnice</mat-label>
+        <mat-select formControlName="tsId">
+          <mat-option id="tsId"  *ngFor="let ts of tipoviSastavnica" [value]="ts.tsId">{{ts.nazivTs}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Sacuvaj sastavnicu</button>
+  </form>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
+
+
+
+
+
+</div>
+</body>

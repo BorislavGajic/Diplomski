@@ -1,0 +1,101 @@
+<div class="panel-header panel-header-sm">
+</div>
+<html>
+<body>
+<!-- header -->
+<nav class="navbar">
+  <!--
+    <div class="navbar-brand">
+      <button class="navbar-item navbar-item-right">gfdgfdg</button>
+    </div>
+
+  -->
+  <a class="mat-button" (click)="logout()">Logout</a>
+</nav>
+
+<h1>Svi materijali</h1>
+<div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class=" text-primary">
+      <th>
+        Id
+      </th>
+      <th>
+        Naziv
+      </th>
+      <th>
+        Opis
+      </th>
+      <th>
+        Brisanje
+      </th>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let materijal of materijali">
+        <tr>
+          <td>{{materijal.matId}}</td>
+          <td>{{materijal.nazivMat}}</td>
+          <td>{{materijal.opisMat}}</td>
+
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="delete(materijal)">Obrisi</button>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-outline-primary" (click)="MakeVote(addVote)">Novi materijal</button>
+</div>
+
+
+
+<ng-template #addVote let-modal windowClass="modal-dialog">
+  <div class="modal-header">
+    <h4 class="modal-title" class="text-right" id="modal-basic-title4">Novi materijal</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+    <div class="card-body">
+
+      <form [formGroup]="MaterijalForm" (ngSubmit)="create()">
+        <div>
+        <div>
+        <label for="nazivMat">Naziv:  </label>
+        </div>
+        <div>
+        <input type="text" formControlName="nazivMat" id="nazivMat" placeholder="Naziv">
+        </div>
+        </div>
+        <div>
+        <div>
+        <label for="opisMat">Opis:  </label>
+        </div>
+        <div>
+        <textarea id="opisMat" name="opisMat" placeholder="Opis" formControlName="opisMat" rows="4" cols="50"> </textarea>
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Kreiraj materijal</button>
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+
