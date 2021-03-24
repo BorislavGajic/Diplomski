@@ -1,0 +1,64 @@
+<div class="panel-header panel-header-sm">
+</div>
+<html>
+<body>
+<!-- header -->
+<nav class="navbar">
+  <!--
+    <div class="navbar-brand">
+      <button class="navbar-item navbar-item-right">gfdgfdg</button>
+    </div>
+
+  -->
+  <a class="mat-button" (click)="logout()">Logout</a>
+</nav>
+
+<h1>Sve kontrole</h1>
+<div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class=" text-primary">
+      <th>
+        Qs kontrola
+      </th>
+      <th>
+        Tip osiguraca
+      </th>
+      <th>
+        Id osiguraca
+      </th>
+      <th>
+        Naziv kontrole
+      </th>
+      <th>
+        Reparacija
+      </th>
+      <th>
+        Brisanje
+      </th>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let kontrola of kontrole">
+        <tr>
+          <td>{{kontrola.tlId.nazivSp}}</td>
+          <td>{{kontrola.tosId.nazTos}}</td>
+          <td>{{kontrola.osigurac.osId}}</td>
+          <td>{{kontrola.nazKont}}</td>
+          <td>{{kontrola.reId.nazivSp}}</td>
+
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="delete(kontrola)">Obrisi</button>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Nova kontrola</button>
+</div>

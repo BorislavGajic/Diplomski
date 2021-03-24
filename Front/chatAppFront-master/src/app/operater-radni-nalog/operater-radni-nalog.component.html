@@ -19,16 +19,13 @@
     <table class="table table-striped">
       <thead class=" text-primary">
       <th>
-        Id
+        Id radnog naloga
       </th>
       <th>
         Id pogona
       </th>
       <th>
         Id kancelarije
-      </th>
-      <th>
-        Brisanje
       </th>
       <th>
         Stavke
@@ -43,19 +40,9 @@
 
           <td>
             <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem (click)="delete(radni_nalog)">Obrisi radni nalog</button>
-              </div>
-            </div>
-          </td>
-
-          <td>
-            <div ngbDropdown class="d-inline-block">
               <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Stavke</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
                 <button ngbDropdownItem (click)="otvoriStavke(openCom, radni_nalog)">Prikazi stavke</button>
-                <button ngbDropdownItem (click)="dodajStavku(radni_nalog)">Nova stavka</button>
               </div>
             </div>
           </td>
@@ -65,8 +52,8 @@
       </tbody>
     </table>
   </div>
-  <button class="btn btn-outline-primary" (click)="MakeVote()">Novi radni nalog</button>
 </div>
+
 
 
 <ng-template #openCom let-modal windowClass="modal-dialog">
@@ -94,9 +81,6 @@
             Naziv materijala
           </th>
           <th>
-            Obrisi
-          </th>
-          <th>
             Stavke sastavnice
           </th>
           </thead>
@@ -110,19 +94,9 @@
 
               <td>
                 <div ngbDropdown class="d-inline-block">
-                  <button class="btn btn-outline-primary" id="dropdownBasic44" ngbDropdownToggle>Obrisi</button>
-                  <div ngbDropdownMenu aria-labelledby="dropdownBasic44">
-                    <button ngbDropdownItem (click)="delete1(stavkaRN)">Obrisi stavku</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div ngbDropdown class="d-inline-block">
                   <button class="btn btn-outline-primary" id="dropdownBasic222" ngbDropdownToggle>Stavke sastavnice</button>
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic222">
                     <button ngbDropdownItem (click)="otvoriStavkeSas(openCom1, stavkaRN)">Prikazi stavke sastavnice</button>
-                    <button ngbDropdownItem (click)="dodajStavkuSas(stavkaRN)">Nova stavka sastavnice</button>
                   </div>
                 </div>
               </td>
@@ -165,9 +139,6 @@
             Kolicina
           </th>
           <th>
-            Obrisi
-          </th>
-          <th>
             Trebovanje
           </th>
           </thead>
@@ -180,19 +151,9 @@
 
               <td>
                 <div ngbDropdown class="d-inline-block">
-                  <button class="btn btn-outline-primary" id="dropdownBasic441" ngbDropdownToggle>Obrisi</button>
-                  <div ngbDropdownMenu aria-labelledby="dropdownBasic441">
-                    <button ngbDropdownItem (click)="delete1(stavkaSas)">Obrisi stavku</button>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div ngbDropdown class="d-inline-block">
                   <button class="btn btn-outline-primary" id="dropdownBasic4441" ngbDropdownToggle>Trebovanje</button>
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic4441">
                     <button ngbDropdownItem (click)="prikaziTrebovano(openCom2, stavkaSas)">Prikazi trebovano</button>
-                    <button ngbDropdownItem (click)="dodajTrebovanje(stavkaSas)">Trebuj novo</button>
                   </div>
                 </div>
               </td>
@@ -212,6 +173,7 @@
 
   </div>
 </ng-template>
+
 
 
 <ng-template #openCom2 let-modal windowClass="modal-dialog">
@@ -253,4 +215,6 @@
 
   </div>
 </ng-template>
+
+
 

@@ -15,6 +15,8 @@ export class OperaterOsiguracComponent implements OnInit {
   osiguraci: any = [];
   closeResult: string;
   OsiguracForm: FormGroup;
+
+  osigurac: any = [];
   constructor(private router: Router, private operaterService: OperaterServiceService, private formBuilder: FormBuilder,
               private modalService: NgbModal) { }
 
@@ -40,6 +42,35 @@ export class OperaterOsiguracComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
         this.osiguraci = data;
+        for ( const osigurac of this.osiguraci){
+          if (osigurac.moId === null) {
+            osigurac.moId = [];
+          }
+          if (osigurac.riId === null) {
+            osigurac.riId = [];
+          }
+          if (osigurac.paId === null) {
+            osigurac.paId = [];
+          }
+          if (osigurac.mId === null) {
+            osigurac.mId = [];
+          }
+          if (osigurac.pcId === null) {
+            osigurac.pcId = [];
+          }
+          if (osigurac.tosId === null) {
+            osigurac.tosId = [];
+          }
+          if (osigurac.tosMultipolId === null) {
+            osigurac.tosMultipolId = [];
+          }
+          if (osigurac.kontrola === null) {
+            osigurac.kontrola = [];
+          }
+          if (osigurac.test === null) {
+            osigurac.test = [];
+          }
+        }
       });
   }
 
@@ -55,8 +86,28 @@ export class OperaterOsiguracComponent implements OnInit {
   get formControls() { return this.OsiguracForm.controls; }
 
   // tslint:disable-next-line:typedef
-  MakeVote(){
-    this.router.navigate(['/noviOsigurac']);
+  MakeVote(addVote){
+    this.modalService.open(addVote, {size: 'xl'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed`;
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  create(){
+    this.operaterService.registrujOsigurac(JSON.stringify(this.OsiguracForm.value))
+      .pipe(first())
+      .subscribe();
+    this.ucitajOsigurace();
+    this.modalService.dismissAll();
+  }
+
+  // tslint:disable-next-line:typedef
+  izmeni(osigurac){
+    this.osigurac = osigurac;
+    this.operaterService.settOsigurac(this.osigurac);
+    this.router.navigate(['/izmenaOsiguraca']);
   }
 
 }

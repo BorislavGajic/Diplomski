@@ -19,6 +19,10 @@ import {AdminCreateSsTrebovanjeComponent} from './admin-create-ss-trebovanje/adm
 import {AdminCreateStavkaMaterijalComponent} from './admin-create-stavka-materijal/admin-create-stavka-materijal.component';
 import {AdminCreateStavkeVezaComponent} from './admin-create-stavke-veza/admin-create-stavke-veza.component';
 import {AdminCreateSektorPogonaComponent} from './admin-create-sektor-pogona/admin-create-sektor-pogona.component';
+import {AdminCreateTipMultipolaComponent} from './admin-create-tip-multipola/admin-create-tip-multipola.component';
+import {OperaterChangeOsiguracComponent} from './operater-change-osigurac/operater-change-osigurac.component';
+import {OperaterCreateTestComponent} from './operater-create-test/operater-create-test.component';
+import {OperaterCreateKontrolaComponent} from './operater-create-kontrola/operater-create-kontrola.component';
 
 const routes: Routes = [
 
@@ -85,6 +89,26 @@ const routes: Routes = [
   {
     path: 'noviSektorPogona',
     component: AdminCreateSektorPogonaComponent,
+    children: [
+    ]},
+  {
+    path: 'noviTipMultipola',
+    component: AdminCreateTipMultipolaComponent,
+    children: [
+    ]},
+  {
+    path: 'izmenaOsiguraca',
+    component: OperaterChangeOsiguracComponent,
+    children: [
+    ]},
+  {
+    path: 'noviTest',
+    component: OperaterCreateTestComponent,
+    children: [
+    ]},
+  {
+    path: 'novaKontrola',
+    component: OperaterCreateKontrolaComponent,
     children: [
     ]},
   {

@@ -9,6 +9,7 @@ import {AdminMaterijalComponent} from '../admin-materijal/admin-materijal.compon
 import {AdminSastavnicaComponent} from '../admin-sastavnica/admin-sastavnica.component';
 import {AdminSektorPogonaComponent} from '../admin-sektor-pogona/admin-sektor-pogona.component';
 import {AdminTipOsiguracaComponent} from '../admin-tip-osiguraca/admin-tip-osiguraca.component';
+import {AdminTipMultipolaComponent} from '../admin-tip-multipola/admin-tip-multipola.component';
 
 export const AdminLayoutRutes: Routes = [
   { path: 'chat',      component: ChatComponent },
@@ -21,5 +22,6 @@ export const AdminLayoutRutes: Routes = [
   { path: 'sastavnicaAdmin',      component: AdminSastavnicaComponent },
   { path: 'sektorPogonaAdmin',      component: AdminSektorPogonaComponent },
   { path: 'tipOsiguracaAdmin',      component: AdminTipOsiguracaComponent },
+  { path: 'tipMultipolaAdmin',      component: AdminTipMultipolaComponent },
 
 ];

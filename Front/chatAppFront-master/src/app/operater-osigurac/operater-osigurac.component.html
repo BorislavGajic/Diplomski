@@ -28,10 +28,25 @@
         Snaga
       </th>
       <th>
+        Tip osiguraca
+      </th>
+      <th>
         Montaza
       </th>
       <th>
         Rivet
+      </th>
+      <th>
+        Print centar
+      </th>
+      <th>
+        Pakeraj
+      </th>
+      <th>
+        Magacin
+      </th>
+      <th>
+        Izmena
       </th>
       <th>
         Brisanje
@@ -43,8 +58,13 @@
           <td>{{osigurac.osId}}</td>
           <td>{{osigurac.maxNapon}}</td>
           <td>{{osigurac.snaga}}</td>
-          <td>{{osigurac.moId.spId}}</td>
-          <td>{{osigurac.riId.spId}}</td>
+          <td>{{osigurac.tosId.nazTos}}</td>
+          <td>{{osigurac.moId.nazivSp}}</td>
+          <td>{{osigurac.riId.nazivSp}}</td>
+          <td>{{osigurac.pcId.nazivSp}}</td>
+          <td>{{osigurac.paId.nazivSp}}</td>
+          <td>{{osigurac.mId.mid}}</td>
+
 
           <td>
             <div ngbDropdown class="d-inline-block">
@@ -55,10 +75,49 @@
             </div>
           </td>
 
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic11" ngbDropdownToggle>Izmena</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="izmeni(osigurac)">Izmeni</button>
+              </div>
+            </div>
+          </td>
+
         </tr>
       </ng-container>
       </tbody>
     </table>
   </div>
-  <button class="btn btn-outline-primary" (click)="MakeVote()">Novi osigurac</button>
+  <button class="btn btn-outline-primary" (click)="MakeVote(addVote1)">Novi osigurac</button>
 </div>
+
+
+<ng-template #addVote1 let-modal windowClass="modal-dialog">
+  <div class="modal-header">
+    <h4 class="modal-title" class="text-right" id="modal-basic-title44">Novi osigurac</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+    <div class="card-body">
+
+      <form [formGroup]="OsiguracForm" (ngSubmit)="create()">
+        <input type="number" formControlName="maxNapon" id="maxNapon" nbInput min="1" max="240"value="1"  placeholder="Max napon">
+        <input type="number" formControlName="snaga" id="snaga" nbInput min="1" max="100"value="1"  placeholder="Snaga osiguraca">
+        <button type="submit" class="btn btn-primary">Kreiraj osigurac</button>
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+

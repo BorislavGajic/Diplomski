@@ -141,7 +141,6 @@ export class AdminSastavnicaComponent implements OnInit {
   otvoriMaterijale(openCom, sastavnica){
     this.sastavnica = sastavnica;
     this.popunjavanje = this.sastavnica.materijalSet;
-    console.log(this.sastavnica);
 
     this.modalService.open(openCom, {size: 'xl'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;

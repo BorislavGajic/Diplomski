@@ -211,7 +211,6 @@ export class AdminServiceService {
 
   // tslint:disable-next-line:typedef
   registrujKancelariju(user) {
-    console.log(user);
     return this.http.post('http://localhost:8090/kancelarija', user,      {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       responseType: 'text'
@@ -315,6 +314,14 @@ export class AdminServiceService {
   }
 
   // tslint:disable-next-line:typedef
+  registrujTipMultipola(user) {
+    return this.http.post('http://localhost:8090/tos_multipol' , user,      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      responseType: 'text'
+    });
+  }
+
+  // tslint:disable-next-line:typedef
   getStanja() {
     return this.http.get('http://localhost:8090/stanje',      {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
@@ -408,6 +415,20 @@ export class AdminServiceService {
   }
 
   // tslint:disable-next-line:typedef
+  getTipoviMultipola() {
+    return this.http.get('http://localhost:8090/tos_multipol',      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  getMultipol() {
+    return this.http.get('http://localhost:8090/multipol',      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  // tslint:disable-next-line:typedef
   registrujTOS(user) {
     return this.http.post('http://localhost:8090/tip_os', user,      {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
@@ -418,6 +439,14 @@ export class AdminServiceService {
   // tslint:disable-next-line:typedef
   deleteTOS(id) {
     return this.http.delete('http://localhost:8090/tip_os/' + id,      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      responseType: 'text'
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  deleteTOM(id, id1) {
+    return this.http.delete('http://localhost:8090/tos_multipol/' + id + '/' + id1,      {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       responseType: 'text'
     });

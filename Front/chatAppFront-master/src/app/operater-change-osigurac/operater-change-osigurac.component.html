@@ -1,0 +1,74 @@
+<div class="panel-header panel-header-sm">
+</div>
+<body>
+<div class="card-body">
+  <h4 class="card-title"> Izmeni osigurac</h4>
+
+  <form [formGroup]="OCForm" (ngSubmit)="create()">
+
+    <div>
+      <mat-form-field >
+        <mat-label>Tip osiguraca</mat-label>
+        <mat-select formControlName="tosId" (selectionChange)="MakeVote6($event.value)">
+          <mat-option id="tosId"  *ngFor="let tos of tipoviOsiguraca" [value]="tos.tosId">{{tos.nazTos}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
+        <mat-label>Montaza</mat-label>
+        <mat-select formControlName="moId" (selectionChange)="MakeVote1($event.value)">
+          <mat-option id="moId"  *ngFor="let mo of montaze" [value]="mo.spId">{{mo.nazivSp}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
+        <mat-label>Rivet</mat-label>
+        <mat-select formControlName="riId" (selectionChange)="MakeVote2($event.value)">
+          <mat-option id="riId"  *ngFor="let ri of riveti" [value]="ri.spId">{{ri.nazivSp}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
+        <mat-label>Print centar</mat-label>
+        <mat-select formControlName="pcId" (selectionChange)="MakeVote3($event.value)">
+          <mat-option id="pcId"  *ngFor="let pc of printCentri" [value]="pc.spId">{{pc.nazivSp}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
+        <mat-label>Pakeraj</mat-label>
+        <mat-select formControlName="paId" (selectionChange)="MakeVote4($event.value)">
+          <mat-option id="paId"  *ngFor="let pa of pakeraji" [value]="pa.spId">{{pa.nazivSp}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
+        <mat-label>Magacin</mat-label>
+        <mat-select formControlName="mId" (selectionChange)="MakeVote5($event.value)">
+          <mat-option id="mId"  *ngFor="let ma of magacini" [value]="ma.mid">{{ma.mid}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Sacuvaj osigurac</button>
+  </form>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
+
+
+
+
+
+</div>
+</body>

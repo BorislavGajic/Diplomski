@@ -1,0 +1,48 @@
+<div class="panel-header panel-header-sm">
+</div>
+<body>
+<div class="card-body">
+  <h4 class="card-title"> Napravi test</h4>
+
+  <form [formGroup]="TestForm" (ngSubmit)="create()">
+    <div>
+      <mat-form-field >
+        <mat-label>Osigurac</mat-label>
+        <mat-select formControlName="osigurac">
+          <mat-option id="osigurac"  *ngFor="let osigurac of osiguraci" [value]="osigurac">{{osigurac.osId}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
+        <mat-label>Test linija</mat-label>
+        <mat-select formControlName="tlId">
+          <mat-option id="tlId"  *ngFor="let tl of testLinije" [value]="tl.spId">{{tl.nazivSp}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
+        <mat-label>Reparacija</mat-label>
+        <mat-select formControlName="reId">
+          <mat-option id="reId"  *ngFor="let re of reparacije" [value]="re.reId">{{re.nazivSp}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <input type="text" formControlName="nazTest" id="nazTest" placeholder="Naziv testa">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sacuvaj test</button>
+  </form>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
+
+
+
+
+
+</div>
+</body>

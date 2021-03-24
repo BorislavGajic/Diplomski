@@ -16,7 +16,8 @@ export const ROUTES: RouteInfo[] = [
   { path: '/admin/radniNalogAdmin', title: 'Radni nalozi',  icon: '', class: '' },
   { path: '/admin/sastavnicaAdmin', title: 'Sastavnice',  icon: '', class: '' },
   { path: '/admin/sektorPogonaAdmin', title: 'Sektor pogona',  icon: '', class: '' },
-  { path: '/admin/tipOsiguracaAdmin', title: 'Tip osiguraca',  icon: '', class: '' }
+  { path: '/admin/tipOsiguracaAdmin', title: 'Tip osiguraca',  icon: '', class: '' },
+  { path: '/admin/tipMultipolaAdmin', title: 'Tip multipola',  icon: '', class: '' }
 
 ];
 

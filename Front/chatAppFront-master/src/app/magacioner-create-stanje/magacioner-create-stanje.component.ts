@@ -34,7 +34,6 @@ export class MagacionerCreateStanjeComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
         this.magacini = data;
-        console.log(this.magacini);
       });
   }
 

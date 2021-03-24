@@ -9,13 +9,21 @@ import {FlatpickrModule} from 'angularx-flatpickr';
 import {OperaterLayoutRutes} from './operater-layout.routing';
 import {OperaterProfilComponent} from '../operater-profil/operater-profil.component';
 import {OperaterOsiguracComponent} from '../operater-osigurac/operater-osigurac.component';
+import {OperaterRadniNalogComponent} from '../operater-radni-nalog/operater-radni-nalog.component';
+import {OperaterTestComponent} from '../operater-test/operater-test.component';
+import {OperaterKontrolaComponent} from '../operater-kontrola/operater-kontrola.component';
+import {OperaterTomComponent} from '../operater-tom/operater-tom.component';
 
 
 
 @NgModule({
   declarations: [OperaterLayoutComponent,
     OperaterProfilComponent,
-    OperaterOsiguracComponent],
+    OperaterOsiguracComponent,
+    OperaterRadniNalogComponent,
+    OperaterTestComponent,
+    OperaterKontrolaComponent,
+    OperaterTomComponent],
   exports: [OperaterLayoutComponent],
   imports: [
     CommonModule,

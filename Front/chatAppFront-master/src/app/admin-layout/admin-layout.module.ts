@@ -18,6 +18,7 @@ import {AdminMaterijalComponent} from '../admin-materijal/admin-materijal.compon
 import {AdminSastavnicaComponent} from '../admin-sastavnica/admin-sastavnica.component';
 import {AdminSektorPogonaComponent} from '../admin-sektor-pogona/admin-sektor-pogona.component';
 import {AdminTipOsiguracaComponent} from '../admin-tip-osiguraca/admin-tip-osiguraca.component';
+import {AdminTipMultipolaComponent} from '../admin-tip-multipola/admin-tip-multipola.component';
 
 
 
@@ -32,7 +33,8 @@ import {AdminTipOsiguracaComponent} from '../admin-tip-osiguraca/admin-tip-osigu
     AdminMaterijalComponent,
     AdminSastavnicaComponent,
     AdminSektorPogonaComponent,
-    AdminTipOsiguracaComponent],
+    AdminTipOsiguracaComponent,
+    AdminTipMultipolaComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRutes),
