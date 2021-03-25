@@ -1,6 +1,8 @@
 package com.diplomski.model;
 
-import net.minidev.json.annotate.JsonIgnore;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -42,18 +44,18 @@ public class Osigurac {
             })
     private Tos_multipol tosMultipolId;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
-            @JoinColumn(name="kontrolaQsId") ,
-            @JoinColumn(name="kontrolaTosId") ,
+            @JoinColumn(name="kontrolaQsId" , referencedColumnName = "qsId") ,
+            @JoinColumn(name="kontrolaTosId" , referencedColumnName = "tosId") ,
     })
     @JsonIgnore
     private Kontrola kontrola;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
-            @JoinColumn(name="testTlId") ,
-            @JoinColumn(name="testTosId") ,
+            @JoinColumn(name="testTlId" , referencedColumnName = "tlId") ,
+            @JoinColumn(name="testTosId"  , referencedColumnName = "tosId") ,
     })
     @JsonIgnore
     private Test test;

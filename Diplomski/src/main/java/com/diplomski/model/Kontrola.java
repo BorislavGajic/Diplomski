@@ -24,7 +24,8 @@ public class Kontrola {
     @JoinColumn(name = "reId")
     private Reparacija reId;
 
-    @OneToOne
+    @OneToOne(mappedBy = "kontrola", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Osigurac osigurac;
 
     public Kontrola() {

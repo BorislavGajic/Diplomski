@@ -1,5 +1,7 @@
 package com.diplomski.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,7 +26,8 @@ public class Test {
     @JoinColumn(name = "reId")
     private Reparacija reId;
 
-    @OneToOne
+    @OneToOne(mappedBy = "test", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Osigurac osigurac;
 
     public Test() {
