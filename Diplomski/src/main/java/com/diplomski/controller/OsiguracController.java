@@ -34,7 +34,10 @@ public class OsiguracController {
     private Tip_osService tip_osService;
 
     @Autowired
-    private Tos_multipolService tos_multipolService;
+    private MultipolService multipolService;
+
+    @Autowired
+    private MagacinService magacinService;
 
     @PostMapping(consumes = "application/json")
     public ResponseEntity<Void> saveOsigurac(@RequestBody OsiguracDTO osiguracDTO, HttpServletRequest httpServletRequest) {
@@ -192,18 +195,43 @@ public class OsiguracController {
         }
     }
 
-    @PutMapping(value = "/tos_multipol" ,consumes = "application/json")
-    public ResponseEntity<Void> putOsTosMultipol(@RequestBody OsiguracDTO osiguracDTO, HttpServletRequest httpServletRequest) {
+    @PutMapping(value = "/multipol" ,consumes = "application/json")
+    public ResponseEntity<Void> putOsMu(@RequestBody OsiguracDTO osiguracDTO, HttpServletRequest httpServletRequest) {
         try {
             List<Osigurac> osiguracs = osiguracService.findAll();
-            List<Tos_multipol> tos_multipols = tos_multipolService.findAll();
+            List<Multipol> multipols = multipolService.findAllByTipSp("Multipol");
             // dodavanje ako je ispravno uneto
             if(osiguracs != null) {
                 for (Osigurac osigurac : osiguracs) {
                     if (osigurac.getOsId()== osiguracDTO.getOsId()) {
-                        for( Tos_multipol tos_multipol : tos_multipols){
-                            if (tos_multipol.getTos_multipolKey().getTosId() == osiguracDTO.getTosId() && tos_multipol.getTos_multipolKey().getMuId() == osiguracDTO.getMuId()) {
-                                osigurac.setTosMultipolId(tos_multipol);
+                        for( Multipol multipol : multipols){
+                            if (multipol.getSpId() == osiguracDTO.getMuId()) {
+                                osigurac.setMuId(multipol);
+                                osiguracService.save(osigurac);
+                                return new ResponseEntity<>(HttpStatus.CREATED);
+                            }
+                        }
+                    }
+                }
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+        }catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+        }
+    }
+
+    @PutMapping(value = "/magacin" ,consumes = "application/json")
+    public ResponseEntity<Void> putOsMa(@RequestBody OsiguracDTO osiguracDTO, HttpServletRequest httpServletRequest) {
+        try {
+            List<Osigurac> osiguracs = osiguracService.findAll();
+            List<Magacin> magacins = magacinService.findAll();
+            // dodavanje ako je ispravno uneto
+            if(osiguracs != null) {
+                for (Osigurac osigurac : osiguracs) {
+                    if (osigurac.getOsId()== osiguracDTO.getOsId()) {
+                        for( Magacin magacin : magacins){
+                            if (magacin.getMId() == osiguracDTO.getmId()) {
+                                osigurac.setmId(magacin);
                                 osiguracService.save(osigurac);
                                 return new ResponseEntity<>(HttpStatus.CREATED);
                             }

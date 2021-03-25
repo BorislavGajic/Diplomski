@@ -38,11 +38,8 @@ public class Osigurac {
     @JoinColumn(name = "tosId")
     private Tip_os tosId;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumns({
-            @JoinColumn(name="tosMultipolMuId") ,
-            @JoinColumn(name="tosMultipolTosId") ,
-            })
-    private Tos_multipol tosMultipolId;
+    @JoinColumn(name = "muId")
+    private Multipol muId;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
@@ -159,11 +156,11 @@ public class Osigurac {
         this.tosId = tosId;
     }
 
-    public Tos_multipol getTosMultipolId() {
-        return tosMultipolId;
+    public Multipol getMuId() {
+        return muId;
     }
 
-    public void setTosMultipolId(Tos_multipol tosMultipolId) {
-        this.tosMultipolId = tosMultipolId;
+    public void setMuId(Multipol muId) {
+        this.muId = muId;
     }
 }
