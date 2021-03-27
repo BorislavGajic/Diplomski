@@ -18,6 +18,9 @@ export class RegistracionComponent implements OnInit {
   radnikRId;
   radnik: any = [];
 
+  pogoni: any = [];
+  magacini: any = [];
+  kancelarije: any = [];
   constructor(    private formBuilder: FormBuilder,
                   private router: Router,
                   private service: AuthService,
@@ -35,14 +38,45 @@ export class RegistracionComponent implements OnInit {
       jmbg: ['', Validators.required],
       tekuciRacun: ['', Validators.required],
       uloga: ['Operater', Validators.required],
+      plata: [50000],
       radnikRId: [],
-      kancelarija_Ka_id: [1],
-      magacinMId: [1],
-      pogonPId: [1]
+      kancelarija_Ka_id: [],
+      magacinMId: [],
+      pogonPId: []
     });
 
-
+    this.ucitajPogone();
+    this.ucitajMagacine();
+    this.ucitajKancelarije();
   }
+
+  // tslint:disable-next-line:typedef
+  ucitajPogone() {
+    this.adminService.getPogone()
+      .pipe(first())
+      .subscribe(data => {
+        this.pogoni = data;
+      });
+  }
+
+  // tslint:disable-next-line:typedef
+  ucitajKancelarije() {
+    this.adminService.getKancelarijas()
+      .pipe(first())
+      .subscribe(data => {
+        this.kancelarije = data;
+      });
+  }
+
+  // tslint:disable-next-line:typedef
+  ucitajMagacine() {
+    this.adminService.getMagacine()
+      .pipe(first())
+      .subscribe(data => {
+        this.magacini = data;
+      });
+  }
+
 
   // tslint:disable-next-line:typedef
   get formControls() { return this.korisnikForm.controls; }
@@ -101,5 +135,10 @@ export class RegistracionComponent implements OnInit {
         });
     }
 
+  }
+
+  // tslint:disable-next-line:typedef
+  MakeVote() {
+    this.router.navigate(['/']);
   }
 }

@@ -35,6 +35,15 @@
 
     <div>
       <mat-form-field >
+        <mat-label>Multipol</mat-label>
+        <mat-select formControlName="muId" (selectionChange)="MakeVote22($event.value)">
+          <mat-option id="muId"  *ngFor="let mu of multipoli" [value]="mu.spId">{{mu.nazivSp}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
         <mat-label>Print centar</mat-label>
         <mat-select formControlName="pcId" (selectionChange)="MakeVote3($event.value)">
           <mat-option id="pcId"  *ngFor="let pc of printCentri" [value]="pc.spId">{{pc.nazivSp}}</mat-option>

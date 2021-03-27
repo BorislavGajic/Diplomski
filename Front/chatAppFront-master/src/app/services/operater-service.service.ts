@@ -6,6 +6,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class OperaterServiceService {
   osigurac: any [];
+  kontrola: any [];
+  test: any [];
   constructor(private http: HttpClient) { }
 
   // tslint:disable-next-line:typedef
@@ -14,8 +16,28 @@ export class OperaterServiceService {
   }
 
   // tslint:disable-next-line:typedef
+  settKontrola(kontrola){
+    this.kontrola = kontrola;
+  }
+
+  // tslint:disable-next-line:typedef
+  settTest(test){
+    this.test = test;
+  }
+
+  // tslint:disable-next-line:typedef
   gettOsigurac(){
     return this.osigurac;
+  }
+
+  // tslint:disable-next-line:typedef
+  gettKontrola(){
+    return this.kontrola;
+  }
+
+  // tslint:disable-next-line:typedef
+  gettTest(){
+    return this.test;
   }
 
   // tslint:disable-next-line:typedef
@@ -66,6 +88,13 @@ export class OperaterServiceService {
   // tslint:disable-next-line:typedef
   getRiveti() {
     return this.http.get('http://localhost:8090/rivet',      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  getMultipoli() {
+    return this.http.get('http://localhost:8090/multipol',      {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
@@ -140,8 +169,8 @@ export class OperaterServiceService {
   }
 
   // tslint:disable-next-line:typedef
-  putTosMultipol(user) {
-    return this.http.put('http://localhost:8090/osigurac/tos_multipol', user,      {
+  putMultipol(user) {
+    return this.http.put('http://localhost:8090/osigurac/multipol', user,      {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       responseType: 'text'
     });
@@ -231,6 +260,22 @@ export class OperaterServiceService {
   getKontrole() {
     return this.http.get('http://localhost:8090/kontrola',      {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  putReKont(user) {
+    return this.http.put('http://localhost:8090/kontrola/reparacija', user,      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      responseType: 'text'
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  putReTest(user) {
+    return this.http.put('http://localhost:8090/test/reparacija', user,      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      responseType: 'text'
     });
   }
 }

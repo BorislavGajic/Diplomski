@@ -49,6 +49,9 @@ export class OperaterOsiguracComponent implements OnInit {
           if (osigurac.riId === null) {
             osigurac.riId = [];
           }
+          if (osigurac.muId === null) {
+            osigurac.muId = [];
+          }
           if (osigurac.paId === null) {
             osigurac.paId = [];
           }

@@ -17,6 +17,7 @@ export class OperaterChangeOsiguracComponent implements OnInit {
 
   montaze: any = [];
   riveti: any = [];
+  multipoli: any = [];
   pakeraji: any = [];
   magacini: any = [];
   printCentri: any = [];
@@ -30,6 +31,7 @@ export class OperaterChangeOsiguracComponent implements OnInit {
       osId: [''],
       moId: [''],
       riId: [''],
+      muId: [''],
       paId: [''],
       mId: [''],
       pcId: [''],
@@ -38,6 +40,7 @@ export class OperaterChangeOsiguracComponent implements OnInit {
     this.osigurac = this.operaterService.gettOsigurac();
     this.ucitajMontaze();
     this.ucitajRivete();
+    this.ucitajMultipole();
     this.ucitajPakeraje();
     this.ucitajMagacine();
     this.ucitajPrintCentre();
@@ -59,6 +62,15 @@ export class OperaterChangeOsiguracComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
         this.riveti = data;
+      });
+  }
+
+  // tslint:disable-next-line:typedef
+  ucitajMultipole() {
+    this.operaterService.getMultipoli()
+      .pipe(first())
+      .subscribe(data => {
+        this.multipoli = data;
       });
   }
 
@@ -160,6 +172,15 @@ export class OperaterChangeOsiguracComponent implements OnInit {
         .pipe(first())
         .subscribe();
 
+  }
+
+  // tslint:disable-next-line:typedef
+  MakeVote22(muId) {
+    this.OCForm.value.osId = this.osigurac.osId;
+    this.OCForm.value.muId = muId;
+    this.operaterService.putMultipol(JSON.stringify(this.OCForm.value))
+      .pipe(first())
+      .subscribe();
   }
 
 }

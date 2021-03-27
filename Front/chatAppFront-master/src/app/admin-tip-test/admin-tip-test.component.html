@@ -13,32 +13,32 @@
   <a class="mat-button" (click)="logout()">Logout</a>
 </nav>
 
-<h1>Svi tipovi multipola</h1>
+<h1>Svi tipovi testova</h1>
 <div>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead class=" text-primary">
       <th>
-        Naziv multipola
+        Test linija
       </th>
       <th>
-        Naziv tipa osiguraca
+        Tip osiguraca
       </th>
       <th>
         Brisanje
       </th>
       </thead>
       <tbody>
-      <ng-container *ngFor="let tom of tipoviMultipola">
+      <ng-container *ngFor="let tipTesta of tipoviTestova">
         <tr>
-          <td>{{tom.muId.nazivSp}}</td>
-          <td>{{tom.tosId.nazTos}}</td>
+          <td>{{tipTesta.tlId.nazivSp}}</td>
+          <td>{{tipTesta.tosId.nazTos}}</td>
 
           <td>
             <div ngbDropdown class="d-inline-block">
               <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem (click)="delete(tom)">Obrisi</button>
+                <button ngbDropdownItem (click)="delete(tipTesta)">Obrisi</button>
               </div>
             </div>
           </td>
@@ -48,5 +48,6 @@
       </tbody>
     </table>
   </div>
-  <button class="btn btn-outline-primary" (click)="MakeVote()">Novi tip multipola</button>
+  <button class="btn btn-outline-primary" (click)="MakeVote()">Novi tip testa</button>
 </div>
+

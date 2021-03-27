@@ -57,4 +57,11 @@ export class OperaterTestComponent implements OnInit {
     this.router.navigate(['/noviTest']);
   }
 
+  // tslint:disable-next-line:typedef
+  addReparacija(test) {
+    this.test = test;
+    this.operaterService.settTest(test);
+    this.router.navigate(['/dodajReTest']);
+  }
+
 }

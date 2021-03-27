@@ -19,10 +19,13 @@ import {AdminCreateSsTrebovanjeComponent} from './admin-create-ss-trebovanje/adm
 import {AdminCreateStavkaMaterijalComponent} from './admin-create-stavka-materijal/admin-create-stavka-materijal.component';
 import {AdminCreateStavkeVezaComponent} from './admin-create-stavke-veza/admin-create-stavke-veza.component';
 import {AdminCreateSektorPogonaComponent} from './admin-create-sektor-pogona/admin-create-sektor-pogona.component';
-import {AdminCreateTipMultipolaComponent} from './admin-create-tip-multipola/admin-create-tip-multipola.component';
 import {OperaterChangeOsiguracComponent} from './operater-change-osigurac/operater-change-osigurac.component';
 import {OperaterCreateTestComponent} from './operater-create-test/operater-create-test.component';
 import {OperaterCreateKontrolaComponent} from './operater-create-kontrola/operater-create-kontrola.component';
+import {OperaterCreateRekonComponent} from './operater-create-rekon/operater-create-rekon.component';
+import {OperaterCreateRetestComponent} from './operater-create-retest/operater-create-retest.component';
+import {AdminCreateTipKontrolaComponent} from './admin-create-tip-kontrola/admin-create-tip-kontrola.component';
+import {AdminCreateTipTestComponent} from './admin-create-tip-test/admin-create-tip-test.component';
 
 const routes: Routes = [
 
@@ -92,11 +95,6 @@ const routes: Routes = [
     children: [
     ]},
   {
-    path: 'noviTipMultipola',
-    component: AdminCreateTipMultipolaComponent,
-    children: [
-    ]},
-  {
     path: 'izmenaOsiguraca',
     component: OperaterChangeOsiguracComponent,
     children: [
@@ -109,6 +107,26 @@ const routes: Routes = [
   {
     path: 'novaKontrola',
     component: OperaterCreateKontrolaComponent,
+    children: [
+    ]},
+  {
+    path: 'dodajReKont',
+    component: OperaterCreateRekonComponent,
+    children: [
+    ]},
+  {
+    path: 'dodajReTest',
+    component: OperaterCreateRetestComponent,
+    children: [
+    ]},
+  {
+    path: 'createTipKontrola',
+    component: AdminCreateTipKontrolaComponent,
+    children: [
+    ]},
+  {
+    path: 'createTipTest',
+    component: AdminCreateTipTestComponent,
     children: [
     ]},
   {

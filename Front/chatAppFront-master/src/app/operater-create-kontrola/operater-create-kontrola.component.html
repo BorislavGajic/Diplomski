@@ -5,6 +5,7 @@
   <h4 class="card-title"> Napravi kontrolu</h4>
 
   <form [formGroup]="KontrolaForm" (ngSubmit)="create()">
+
     <div>
       <mat-form-field >
         <mat-label>Osigurac</mat-label>
@@ -19,15 +20,6 @@
         <mat-label>Qs kontrola</mat-label>
         <mat-select formControlName="qsId">
           <mat-option id="qsId"  *ngFor="let qs of qsKontrole" [value]="qs.spId">{{qs.nazivSp}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div>
-      <mat-form-field >
-        <mat-label>Reparacija</mat-label>
-        <mat-select formControlName="reId">
-          <mat-option id="reId"  *ngFor="let re of reparacije" [value]="re.reId">{{re.nazivSp}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>

@@ -19,7 +19,10 @@
     <table class="table table-striped">
       <thead class=" text-primary">
       <th>
-        Test linija
+        Test id
+      </th>
+      <th>
+        Test naziv
       </th>
       <th>
         Tip osiguraca
@@ -28,7 +31,7 @@
         Id osiguraca
       </th>
       <th>
-        Naziv testa
+        Test linija
       </th>
       <th>
         Reparacija
@@ -36,14 +39,18 @@
       <th>
         Brisanje
       </th>
+      <th>
+        Dodavanje reparacije
+      </th>
       </thead>
       <tbody>
       <ng-container *ngFor="let test of testovi">
         <tr>
-          <td>{{test.tlId.nazivSp}}</td>
-          <td>{{test.tosId.nazTos}}</td>
-          <td>{{test.osigurac.osId}}</td>
+          <td>{{test.testId}}</td>
           <td>{{test.nazTest}}</td>
+          <td>{{test.osigurac.tosId.nazTos}}</td>
+          <td>{{test.osigurac.osId}}</td>
+          <td>{{test.tip_test.tlId.nazivSp}}</td>
           <td>{{test.reId.nazivSp}}</td>
 
           <td>
@@ -51,6 +58,15 @@
               <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <button ngbDropdownItem (click)="delete(test)">Obrisi</button>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic11" ngbDropdownToggle>Dodavanje</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic11">
+                <button ngbDropdownItem (click)="addReparacija(test)">Reparacija</button>
               </div>
             </div>
           </td>

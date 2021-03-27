@@ -282,7 +282,7 @@ export class AdminServiceService {
   }
 
   // tslint:disable-next-line:typedef
-  dodajPodsastavnicu(user,id) {
+  dodajPodsastavnicu(user, id) {
     return this.http.put('http://localhost:8090/sastavnica/' + id + '/rekurzija', user,      {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       responseType: 'text'
@@ -422,13 +422,6 @@ export class AdminServiceService {
   }
 
   // tslint:disable-next-line:typedef
-  getMultipol() {
-    return this.http.get('http://localhost:8090/multipol',      {
-      headers: new HttpHeaders().set('Content-Type', 'application/json')
-    });
-  }
-
-  // tslint:disable-next-line:typedef
   registrujTOS(user) {
     return this.http.post('http://localhost:8090/tip_os', user,      {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
@@ -445,10 +438,62 @@ export class AdminServiceService {
   }
 
   // tslint:disable-next-line:typedef
-  deleteTOM(id, id1) {
-    return this.http.delete('http://localhost:8090/tos_multipol/' + id + '/' + id1,      {
+  getTipoviTestova() {
+    return this.http.get('http://localhost:8090/tip_test',      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  deleteTipTest(id, id1) {
+    return this.http.delete('http://localhost:8090/tip_test/' + id + '/' + id1,      {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       responseType: 'text'
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  getTipKontrola() {
+    return this.http.get('http://localhost:8090/tip_kontrola',      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  deleteTipKontrola(id, id1) {
+    return this.http.delete('http://localhost:8090/tip_kontrola/' + id + '/' + id1,      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      responseType: 'text'
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  registrujTipTest(user) {
+    return this.http.post('http://localhost:8090/tip_test', user,      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      responseType: 'text'
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  registrujTipKontrola(user) {
+    return this.http.post('http://localhost:8090/tip_kontrola', user,      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      responseType: 'text'
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  getQsKontrole() {
+    return this.http.get('http://localhost:8090/qs_kontrola',      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  getTestLinije() {
+    return this.http.get('http://localhost:8090/test_linija',      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
 }

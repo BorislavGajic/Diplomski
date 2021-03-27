@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminTipMultipolaComponent } from './admin-tip-multipola.component';
+import { AdminCreateTipTestComponent } from './admin-create-tip-test.component';
 
-describe('AdminTipMultipolaComponent', () => {
-  let component: AdminTipMultipolaComponent;
-  let fixture: ComponentFixture<AdminTipMultipolaComponent>;
+describe('AdminCreateTipTestComponent', () => {
+  let component: AdminCreateTipTestComponent;
+  let fixture: ComponentFixture<AdminCreateTipTestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminTipMultipolaComponent ]
+      declarations: [ AdminCreateTipTestComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminTipMultipolaComponent);
+    fixture = TestBed.createComponent(AdminCreateTipTestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

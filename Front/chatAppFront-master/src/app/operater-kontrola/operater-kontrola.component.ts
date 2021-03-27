@@ -56,4 +56,11 @@ export class OperaterKontrolaComponent implements OnInit {
     this.router.navigate(['/novaKontrola']);
   }
 
+  // tslint:disable-next-line:typedef
+  addReparacija(kontrola) {
+    this.kontrola = kontrola;
+    this.operaterService.settKontrola(kontrola);
+    this.router.navigate(['/dodajReKont']);
+  }
+
 }

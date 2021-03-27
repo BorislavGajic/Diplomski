@@ -19,7 +19,10 @@
     <table class="table table-striped">
       <thead class=" text-primary">
       <th>
-        Qs kontrola
+        Id kontrole
+      </th>
+      <th>
+        Naziv kontrole
       </th>
       <th>
         Tip osiguraca
@@ -28,7 +31,7 @@
         Id osiguraca
       </th>
       <th>
-        Naziv kontrole
+        Qs kontrola
       </th>
       <th>
         Reparacija
@@ -36,14 +39,18 @@
       <th>
         Brisanje
       </th>
+      <th>
+        Dodavanje
+      </th>
       </thead>
       <tbody>
       <ng-container *ngFor="let kontrola of kontrole">
         <tr>
-          <td>{{kontrola.tlId.nazivSp}}</td>
-          <td>{{kontrola.tosId.nazTos}}</td>
-          <td>{{kontrola.osigurac.osId}}</td>
+          <td>{{kontrola.kontrolaId}}</td>
           <td>{{kontrola.nazKont}}</td>
+          <td>{{kontrola.osigurac.tosId.nazTos}}</td>
+          <td>{{kontrola.osigurac.osId}}</td>
+          <td>{{kontrola.tip_kontrola.qsId.nazivSp}}</td>
           <td>{{kontrola.reId.nazivSp}}</td>
 
           <td>
@@ -51,6 +58,15 @@
               <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <button ngbDropdownItem (click)="delete(kontrola)">Obrisi</button>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic11" ngbDropdownToggle>Dodavanje</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic11">
+                <button ngbDropdownItem (click)="addReparacija(kontrola)">Reparacija</button>
               </div>
             </div>
           </td>

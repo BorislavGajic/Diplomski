@@ -4,7 +4,6 @@ import {OperaterProfilComponent} from '../operater-profil/operater-profil.compon
 import {OperaterOsiguracComponent} from '../operater-osigurac/operater-osigurac.component';
 import {OperaterRadniNalogComponent} from '../operater-radni-nalog/operater-radni-nalog.component';
 import {OperaterTestComponent} from '../operater-test/operater-test.component';
-import {OperaterTomComponent} from '../operater-tom/operater-tom.component';
 import {OperaterKontrolaComponent} from '../operater-kontrola/operater-kontrola.component';
 
 export const OperaterLayoutRutes: Routes = [
@@ -13,6 +12,5 @@ export const OperaterLayoutRutes: Routes = [
   { path: 'operaterOsigurac',      component: OperaterOsiguracComponent },
   { path: 'operaterRadniNalog',      component: OperaterRadniNalogComponent },
   { path: 'operaterTest',      component: OperaterTestComponent },
-  { path: 'operaterTOM',      component: OperaterTomComponent },
   { path: 'operaterKontrola',      component: OperaterKontrolaComponent },
 ];

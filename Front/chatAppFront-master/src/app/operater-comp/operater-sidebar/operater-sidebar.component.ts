@@ -12,7 +12,6 @@ export const ROUTES: RouteInfo[] = [
   { path: '/operater/operaterRadniNalog', title: 'Radni nalozi',  icon: '', class: '' },
   { path: '/operater/operaterOsigurac', title: 'Osiguraci',  icon: '', class: '' },
   { path: '/operater/operaterTest', title: 'Testovi',  icon: '', class: '' },
-  { path: '/operater/operaterTOM', title: 'Multipol',  icon: '', class: '' },
   { path: '/operater/operaterKontrola', title: 'Kontrole',  icon: '', class: '' }
 ];
 

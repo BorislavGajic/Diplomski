@@ -1,4 +1,4 @@
-
+<body>
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
@@ -20,18 +20,49 @@
       <div>
         <input id="Admin" type="radio" value="Admin" name="uloga" formControlName="uloga">
         <label for="Admin">Admin</label>
+
+        <div>
+          <mat-form-field >
+            <mat-label>Kancelarija</mat-label>
+            <mat-select formControlName="kancelarija_Ka_id">
+              <mat-option id="kancelarija_Ka_id"  *ngFor="let kan of kancelarije" [value]="kan.kaId">{{kan.kaId}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
       </div>
       <div>
         <input id="Magacioner" type="radio" value="Magacioner" name="uloga" formControlName="uloga">
         <label for="Magacioner">Magacioner</label>
+
+        <div>
+          <mat-form-field >
+            <mat-label>Magacin</mat-label>
+            <mat-select formControlName="magacinMId">
+              <mat-option id="magacinMId"  *ngFor="let mag of magacini" [value]="mag.mId">{{mag.mId}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
       </div>
       <div>
         <input id="Operater" type="radio" value="Operater" name="uloga" formControlName="uloga">
         <label for="Operater">Operater</label>
+
+        <div>
+          <mat-form-field >
+            <mat-label>Pogon</mat-label>
+            <mat-select formControlName="pogonPId">
+              <mat-option id="pogonPId"  *ngFor="let pog of pogoni" [value]="pog.pId">{{pog.pId}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
       </div>
 
-      <input type="submit" class="fadeIn fourth" value="Register">
+      <input type="submit" class="btn btn-primary" value="Registruj se">
     </form>
-
+    <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
   </div>
 </div>
+</body>

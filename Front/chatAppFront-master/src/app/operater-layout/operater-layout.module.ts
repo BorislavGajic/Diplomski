@@ -12,7 +12,6 @@ import {OperaterOsiguracComponent} from '../operater-osigurac/operater-osigurac.
 import {OperaterRadniNalogComponent} from '../operater-radni-nalog/operater-radni-nalog.component';
 import {OperaterTestComponent} from '../operater-test/operater-test.component';
 import {OperaterKontrolaComponent} from '../operater-kontrola/operater-kontrola.component';
-import {OperaterTomComponent} from '../operater-tom/operater-tom.component';
 
 
 
@@ -22,8 +21,7 @@ import {OperaterTomComponent} from '../operater-tom/operater-tom.component';
     OperaterOsiguracComponent,
     OperaterRadniNalogComponent,
     OperaterTestComponent,
-    OperaterKontrolaComponent,
-    OperaterTomComponent],
+    OperaterKontrolaComponent],
   exports: [OperaterLayoutComponent],
   imports: [
     CommonModule,
