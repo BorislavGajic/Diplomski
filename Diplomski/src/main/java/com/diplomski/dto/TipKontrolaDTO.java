@@ -1,15 +1,15 @@
 package com.diplomski.dto;
 
-public class Tos_multipolDTO {
-    private Integer muId;
+public class TipKontrolaDTO {
+    private Integer qsId;
     private Integer tosId;
 
-    public Integer getMuId() {
-        return muId;
+    public Integer getQsId() {
+        return qsId;
     }
 
-    public void setMuId(Integer muId) {
-        this.muId = muId;
+    public void setQsId(Integer qsId) {
+        this.qsId = qsId;
     }
 
     public Integer getTosId() {

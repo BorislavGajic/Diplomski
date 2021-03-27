@@ -5,26 +5,26 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class TestKey implements Serializable {
-    @Column(name = "tlId")
-    private Integer tlId;
+public class TipKontrolaKey implements Serializable {
+    @Column(name = "qsId")
+    private Integer qsId;
     @Column(name = "tosId")
     private Integer tosId;
 
-    public TestKey() {
+    public TipKontrolaKey() {
     }
 
-    public TestKey(Integer tlId, Integer tosId) {
-        this.tlId = tlId;
+    public TipKontrolaKey(Integer qsId, Integer tosId) {
+        this.qsId = qsId;
         this.tosId = tosId;
     }
 
-    public Integer getTlId() {
-        return tlId;
+    public Integer getQsId() {
+        return qsId;
     }
 
-    public void setTlId(Integer tlId) {
-        this.tlId = tlId;
+    public void setQsId(Integer qsId) {
+        this.qsId = qsId;
     }
 
     public Integer getTosId() {

@@ -6,18 +6,17 @@ import javax.persistence.*;
 
 @Entity
 public class Test {
-    @EmbeddedId
-    private TestKey testKey;
+    @Id
+    @Column(name="testId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer testId;
 
-    @ManyToOne
-    @MapsId("tlId")
-    @JoinColumn(name = "tlId")
-    private Test_linija tlId;
-
-    @ManyToOne
-    @MapsId("tosId")
-    @JoinColumn(name = "tosId")
-    private Tip_os tosId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumns({
+            @JoinColumn(name="tipTestTlId") ,
+            @JoinColumn(name="tipTestTosId") ,
+    })
+    private Tip_test tip_test;
 
     @Column(name = "nazTest")
     private String nazTest;
@@ -33,35 +32,20 @@ public class Test {
     public Test() {
     }
 
-    public Test(TestKey testKey, Test_linija tlId, Tip_os tosId, String nazTest) {
-        this.testKey = testKey;
-        this.tlId = tlId;
-        this.tosId = tosId;
+    public Test(Integer testId, Tip_test tip_test, String nazTest, Reparacija reId, Osigurac osigurac) {
+        this.testId = testId;
+        this.tip_test = tip_test;
         this.nazTest = nazTest;
+        this.reId = reId;
+        this.osigurac = osigurac;
     }
 
-    public TestKey getTestKey() {
-        return testKey;
+    public Integer getTestId() {
+        return testId;
     }
 
-    public void setTestKey(TestKey testKey) {
-        this.testKey = testKey;
-    }
-
-    public Test_linija getTlId() {
-        return tlId;
-    }
-
-    public void setTlId(Test_linija tlId) {
-        this.tlId = tlId;
-    }
-
-    public Tip_os getTosId() {
-        return tosId;
-    }
-
-    public void setTosId(Tip_os tosId) {
-        this.tosId = tosId;
+    public void setTestId(Integer testId) {
+        this.testId = testId;
     }
 
     public String getNazTest() {
@@ -86,5 +70,14 @@ public class Test {
 
     public void setOsigurac(Osigurac osigurac) {
         this.osigurac = osigurac;
+    }
+
+
+    public Tip_test getTip_test() {
+        return tip_test;
+    }
+
+    public void setTip_test(Tip_test tip_test) {
+        this.tip_test = tip_test;
     }
 }

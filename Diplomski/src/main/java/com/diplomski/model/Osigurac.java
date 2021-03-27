@@ -42,18 +42,12 @@ public class Osigurac {
     private Multipol muId;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumns({
-            @JoinColumn(name="kontrolaQsId" , referencedColumnName = "qsId") ,
-            @JoinColumn(name="kontrolaTosId" , referencedColumnName = "tosId") ,
-    })
+    @JoinColumn(name="kontrolaId" , referencedColumnName = "kontrolaId")
     @JsonIgnore
     private Kontrola kontrola;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumns({
-            @JoinColumn(name="testTlId" , referencedColumnName = "tlId") ,
-            @JoinColumn(name="testTosId"  , referencedColumnName = "tosId") ,
-    })
+    @JoinColumn(name="testId" , referencedColumnName = "testId")
     @JsonIgnore
     private Test test;
 

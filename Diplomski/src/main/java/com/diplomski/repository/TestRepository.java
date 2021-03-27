@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TestRepository extends JpaRepository<Test, TestKey> {
+public interface TestRepository extends JpaRepository<Test, Integer> {
     List<Test> findAll();
     Test save(Test test);
-    void deleteById(TestKey testKey);
-    Optional<Test> findById(TestKey testKey);
+    void deleteById(Integer id);
+    Optional<Test> findById(Integer id);
 }

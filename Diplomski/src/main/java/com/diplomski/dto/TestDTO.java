@@ -1,11 +1,20 @@
 package com.diplomski.dto;
 
 public class TestDTO {
+    private Integer testId;
     private Integer tlId;
     private Integer tosId;
     private String nazTest;
     private Integer reId;
     private Integer osId;
+
+    public Integer getTestId() {
+        return testId;
+    }
+
+    public void setTestId(Integer testId) {
+        this.testId = testId;
+    }
 
     public Integer getTlId() {
         return tlId;

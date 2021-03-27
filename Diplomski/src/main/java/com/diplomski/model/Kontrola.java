@@ -1,21 +1,22 @@
 package com.diplomski.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
 public class Kontrola {
-    @EmbeddedId
-    private KontrolaKey kontrolaKey;
+    @Id
+    @Column(name="kontrolaId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer kontrolaId;
 
-    @ManyToOne
-    @MapsId("qsId")
-    @JoinColumn(name = "qsId")
-    private QS_kontrola qsId;
-
-    @ManyToOne
-    @MapsId("tosId")
-    @JoinColumn(name = "tosId")
-    private Tip_os tosId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumns({
+            @JoinColumn(name="tipKontrolaQsId") ,
+            @JoinColumn(name="tipKontrolaTosId") ,
+    })
+    private Tip_kontrola tip_kontrola;
 
     @Column(name = "nazKont")
     private String nazKont;
@@ -31,35 +32,28 @@ public class Kontrola {
     public Kontrola() {
     }
 
-    public Kontrola(KontrolaKey kontrolaKey, QS_kontrola qsId, Tip_os tosId, String nazKont) {
-        this.kontrolaKey = kontrolaKey;
-        this.qsId = qsId;
-        this.tosId = tosId;
+    public Kontrola(Integer kontrolaId, Tip_kontrola tip_kontrola, String nazKont, Reparacija reId, Osigurac osigurac) {
+        this.kontrolaId = kontrolaId;
+        this.tip_kontrola = tip_kontrola;
         this.nazKont = nazKont;
+        this.reId = reId;
+        this.osigurac = osigurac;
     }
 
-    public KontrolaKey getKontrolaKey() {
-        return kontrolaKey;
+    public Integer getKontrolaId() {
+        return kontrolaId;
     }
 
-    public void setKontrolaKey(KontrolaKey kontrolaKey) {
-        this.kontrolaKey = kontrolaKey;
+    public void setKontrolaId(Integer kontrolaId) {
+        this.kontrolaId = kontrolaId;
     }
 
-    public QS_kontrola getQsId() {
-        return qsId;
+    public Tip_kontrola getTip_kontrola() {
+        return tip_kontrola;
     }
 
-    public void setQsId(QS_kontrola qsId) {
-        this.qsId = qsId;
-    }
-
-    public Tip_os getTosId() {
-        return tosId;
-    }
-
-    public void setTosId(Tip_os tosId) {
-        this.tosId = tosId;
+    public void setTip_kontrola(Tip_kontrola tip_kontrola) {
+        this.tip_kontrola = tip_kontrola;
     }
 
     public String getNazKont() {

@@ -1,9 +1,6 @@
 package com.diplomski.service;
 
-import com.diplomski.model.Kontrola;
-import com.diplomski.model.KontrolaKey;
 import com.diplomski.model.Test;
-import com.diplomski.model.TestKey;
 import com.diplomski.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +20,9 @@ public class TestService {
     public List<Test> findAll() {
         return testRepository.findAll(); }
 
-    public void remove(TestKey testKey) {
-        testRepository.deleteById(testKey);
+    public void remove(Integer id) {
+        testRepository.deleteById(id);
     }
 
-    public Optional<Test> findById(TestKey testKey) { return  testRepository.findById(testKey); }
+    public Optional<Test> findById(Integer id) { return  testRepository.findById(id); }
 }

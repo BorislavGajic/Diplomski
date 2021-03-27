@@ -1,6 +1,5 @@
 package com.diplomski.controller;
 
-import com.diplomski.dto.KontrolaDTO;
 import com.diplomski.dto.TestDTO;
 import com.diplomski.model.*;
 import com.diplomski.service.*;
@@ -21,38 +20,26 @@ public class TestController {
     private TestService testService;
 
     @Autowired
-    private Test_linijaService test_linijaService;
-
-    @Autowired
-    private Tip_osService tip_osService;
-
-    @Autowired
     private ReparacijaService reparacijaService;
 
     @Autowired
     private OsiguracService osiguracService;
 
+    @Autowired
+    private TipTestService tipTestService;
+
     @PostMapping(consumes = "application/json")
     public ResponseEntity<Void> saveTest(@RequestBody TestDTO testDTO, HttpServletRequest httpServletRequest) {
         try {
             Test test = new Test();
-            TestKey testKey = new TestKey(testDTO.getTlId(),testDTO.getTosId());
-            test.setTestKey(testKey);
+            TipTestKey tipTestKey = new TipTestKey(testDTO.getTlId(),testDTO.getTosId());
+
             test.setNazTest(testDTO.getNazTest());
 
-            Optional<Test_linija> test_linija = test_linijaService.findById(testDTO.getTlId());
-            if(test_linija.isPresent() ) {
-                test_linija.ifPresent(test_linija1 -> {
-                    test.setTlId(test_linija1);
-                });
-            }
-            else{
-                return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-            }
-            Optional<Tip_os> tip_os = tip_osService.findById(testDTO.getTosId());
-            if(tip_os.isPresent() ) {
-                tip_os.ifPresent(tip_os1 -> {
-                    test.setTosId(tip_os1);
+            Optional<Tip_test> tip_test = tipTestService.findById(tipTestKey);
+            if(tip_test.isPresent() ) {
+                tip_test.ifPresent(tip_test1 -> {
+                    test.setTip_test(tip_test1);
                 });
             }
             else{
@@ -86,10 +73,9 @@ public class TestController {
         return new ResponseEntity<>(tests, HttpStatus.NOT_MODIFIED);
     }
 
-    @DeleteMapping(value = "/{id}/{id1}")
-    public ResponseEntity<Void> deleteTest(@PathVariable Integer id,@PathVariable Integer id1 ) {
-        TestKey testKey = new TestKey(id,id1);
-        Optional<Test> test = testService.findById(testKey);
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteTest(@PathVariable Integer id ) {
+        Optional<Test> test = testService.findById(id);
         if(test.isPresent() ) {
             test.ifPresent(test1 -> {
                 Optional<Osigurac> osigurac = osiguracService.findById(test1.getOsigurac().getOsId());
@@ -100,7 +86,7 @@ public class TestController {
                 }
             });
         }
-        testService.remove(testKey);
+        testService.remove(id);
         return new ResponseEntity<>((HttpStatus.OK));
     }
 
@@ -112,7 +98,7 @@ public class TestController {
             // dodavanje ako je ispravno uneto
             if(tests != null) {
                 for (Test test : tests) {
-                    if (test.getTestKey().getTlId() == testDTO.getTlId() && test.getTestKey().getTosId() == testDTO.getTosId()) {
+                    if (test.getTestId() == testDTO.getTestId()) {
                         for( Reparacija reparacija : reparacijas){
                             if (reparacija.getSpId() == testDTO.getReId()) {
                                 test.setReId(reparacija);

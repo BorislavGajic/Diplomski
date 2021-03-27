@@ -20,38 +20,25 @@ public class KontrolaController {
     private KontrolaService kontrolaService;
 
     @Autowired
-    private QS_kontrolaService qs_kontrolaService;
-
-    @Autowired
-    private Tip_osService tip_osService;
-
-    @Autowired
     private ReparacijaService reparacijaService;
 
     @Autowired
     private OsiguracService osiguracService;
 
+    @Autowired
+    private TipKontrolaService tipKontrolaService;
+
     @PostMapping(consumes = "application/json")
     public ResponseEntity<Void> saveKontrola(@RequestBody KontrolaDTO kontrolaDTO, HttpServletRequest httpServletRequest) {
 
             Kontrola kontrola = new Kontrola();
-            KontrolaKey kontrolaKey = new KontrolaKey(kontrolaDTO.getQsId(),kontrolaDTO.getTosId());
-            kontrola.setKontrolaKey(kontrolaKey);
+            TipKontrolaKey tipKontrolaKey = new TipKontrolaKey(kontrolaDTO.getQsId(),kontrolaDTO.getTosId());
             kontrola.setNazKont(kontrolaDTO.getNazKont());
 
-            Optional<QS_kontrola> qs_kontrola = qs_kontrolaService.findById(kontrolaDTO.getQsId());
-            if(qs_kontrola.isPresent() ) {
-                qs_kontrola.ifPresent(qs_kontrola1 -> {
-                    kontrola.setQsId(qs_kontrola1);
-                });
-            }
-            else{
-                return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-            }
-            Optional<Tip_os> tip_os = tip_osService.findById(kontrolaDTO.getTosId());
-            if(tip_os.isPresent() ) {
-                tip_os.ifPresent(tip_os1 -> {
-                    kontrola.setTosId(tip_os1);
+            Optional<Tip_kontrola> tip_kontrola = tipKontrolaService.findById(tipKontrolaKey);
+            if(tip_kontrola.isPresent() ) {
+                tip_kontrola.ifPresent(tip_kontrola1 -> {
+                    kontrola.setTip_kontrola(tip_kontrola1);
                 });
             }
             else{
@@ -82,10 +69,9 @@ public class KontrolaController {
         return new ResponseEntity<>(kontrolas, HttpStatus.NOT_MODIFIED);
     }
 
-    @DeleteMapping(value = "/{id}/{id1}")
-    public ResponseEntity<Void> deleteKontrola(@PathVariable Integer id,@PathVariable Integer id1 ) {
-        KontrolaKey kontrolaKey = new KontrolaKey(id,id1);
-        Optional<Kontrola> kontrola = kontrolaService.findById(kontrolaKey);
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteKontrola(@PathVariable Integer id ) {
+        Optional<Kontrola> kontrola = kontrolaService.findById(id);
         if(kontrola.isPresent() ) {
             kontrola.ifPresent(kontrola1 -> {
                 Optional<Osigurac> osigurac = osiguracService.findById(kontrola1.getOsigurac().getOsId());
@@ -96,7 +82,7 @@ public class KontrolaController {
                 }
             });
         }
-        kontrolaService.remove(kontrolaKey);
+        kontrolaService.remove(id);
         return new ResponseEntity<>((HttpStatus.OK));
     }
 
@@ -108,7 +94,7 @@ public class KontrolaController {
             // dodavanje ako je ispravno uneto
             if(kontrolas != null) {
                 for (Kontrola kontrola : kontrolas) {
-                    if (kontrola.getKontrolaKey().getQsId() == kontrolaDTO.getQsId() && kontrola.getKontrolaKey().getTosId() == kontrolaDTO.getTosId()) {
+                    if (kontrola.getKontrolaId() == kontrolaDTO.getKontrolaId()) {
                         for( Reparacija reparacija : reparacijas){
                             if (reparacija.getSpId() == kontrolaDTO.getReId()) {
                                 kontrola.setReId(reparacija);

@@ -20,9 +20,9 @@ public class KontrolaService {
     public List<Kontrola> findAll() {
         return kontrolaRepository.findAll(); }
 
-    public void remove(KontrolaKey kontrolaKey) {
-        kontrolaRepository.deleteById(kontrolaKey);
+    public void remove(Integer id) {
+        kontrolaRepository.deleteById(id);
     }
 
-    public Optional<Kontrola> findById(KontrolaKey kontrolaKey) { return  kontrolaRepository.findById(kontrolaKey); }
+    public Optional<Kontrola> findById(Integer id) { return  kontrolaRepository.findById(id); }
 }

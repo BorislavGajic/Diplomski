@@ -1,11 +1,20 @@
 package com.diplomski.dto;
 
 public class KontrolaDTO {
+    private Integer kontrolaId;
     private Integer qsId;
     private Integer tosId;
     private String nazKont;
     private Integer reId;
     private Integer osId;
+
+    public Integer getKontrolaId() {
+        return kontrolaId;
+    }
+
+    public void setKontrolaId(Integer kontrolaId) {
+        this.kontrolaId = kontrolaId;
+    }
 
     public Integer getQsId() {
         return qsId;
