@@ -19,6 +19,7 @@ export class OperaterCreateRekonComponent implements OnInit {
 
   ngOnInit(): void {
     this.KontrolaForm = this.formBuilder.group({
+      kontrolaId: [''],
       qsId: [''],
       tosId: [''],
       reId: ['']
@@ -38,8 +39,9 @@ export class OperaterCreateRekonComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   create(){
-    this.KontrolaForm.value.tosId = this.kontrola.kontrolaKey.tosId;
-    this.KontrolaForm.value.qsId = this.kontrola.kontrolaKey.qsId;
+    this.KontrolaForm.value.tosId = this.kontrola.tip_kontrola.tosId.tosId;
+    this.KontrolaForm.value.qsId = this.kontrola.tip_kontrola.qsId.tosId;
+    this.KontrolaForm.value.kontrolaId = this.kontrola.kontrolaId;
     this.operaterService.putReKont(JSON.stringify(this.KontrolaForm.value))
       .pipe(first())
       .subscribe();

@@ -19,6 +19,7 @@ export class OperaterCreateRetestComponent implements OnInit {
 
   ngOnInit(): void {
     this.TestForm = this.formBuilder.group({
+      testId: [''],
       tlId: [''],
       tosId: [''],
       reId: ['']
@@ -38,8 +39,9 @@ export class OperaterCreateRetestComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   create(){
-    this.TestForm.value.tosId = this.test.testKey.tosId;
-    this.TestForm.value.tlId = this.test.testKey.tlId;
+    this.TestForm.value.tosId = this.test.tip_test.tosId.tosId;
+    this.TestForm.value.tlId = this.test.tip_test.tlId.tlId;
+    this.TestForm.value.testId = this.test.testId;
     this.operaterService.putReTest(JSON.stringify(this.TestForm.value))
       .pipe(first())
       .subscribe();
