@@ -18,14 +18,14 @@
 
     <div>
       <mat-form-field >
-        <mat-label>Tip osigurac</mat-label>
+        <mat-label>Tip osigurača</mat-label>
         <mat-select formControlName="tosId">
           <mat-option id="tosId"  *ngFor="let tos of tipOs" [value]="tos.tosId">{{tos.nazTos}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
 
-    <button type="submit" class="btn btn-primary">Sacuvaj tip kontrola</button>
+    <button type="submit" class="btn btn-primary">Sačuvaj tip kontrola</button>
   </form>
   <button class="btn btn-outline-primary" (click)="MakeVote()">Odustani</button>
 

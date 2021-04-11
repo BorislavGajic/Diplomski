@@ -184,6 +184,13 @@ export class OperaterServiceService {
   }
 
   // tslint:disable-next-line:typedef
+  getRadneNalogePogon(id) {
+    return this.http.get('http://localhost:8090/radni_nalog/pogon/' + id,      {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  // tslint:disable-next-line:typedef
   getPogone() {
     return this.http.get('http://localhost:8090/pogon',      {
       headers: new HttpHeaders().set('Content-Type', 'application/json')

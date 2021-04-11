@@ -22,16 +22,16 @@
         Id
       </th>
       <th>
-        Kolicina ormana
+        Količina ormana
       </th>
       <th>
-        Kolicina racunara
+        Količina računara
       </th>
       <th>
-        Kolicina stolica
+        Količina stolica
       </th>
       <th>
-        Kolicina stolova
+        Količina stolova
       </th>
       <th>
         Brisanje
@@ -48,9 +48,9 @@
 
           <td>
             <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obriši</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem (click)="delete(kancelarija)">Obrisi</button>
+                <button ngbDropdownItem (click)="delete(kancelarija)">Obriši</button>
               </div>
             </div>
           </td>
@@ -78,10 +78,10 @@
     <div class="card-body">
 
       <form [formGroup]="KancelarijaForm" (ngSubmit)="create()">
-        <input type="number" formControlName="kol_ormana_k" id="kolOrmanaK" nbInput min="1" max="50"value="1"  placeholder="Kolicina ormana">
-        <input type="number" formControlName="kol_racunara" id="kolRacunara" nbInput min="1" max="50"value="1"  placeholder="Kolicina racunara">
-        <input type="number" formControlName="kol_stolica_k" id="kolStolicaK" nbInput min="1" max="50"value="1"  placeholder="Kolicina stolica">
-        <input type="number" formControlName="kol_stolova_k" id="kolStolovaK" nbInput min="1" max="50"value="1"  placeholder="Kolicina stolova">
+        <input type="number" formControlName="kol_ormana_k" id="kolOrmanaK" nbInput min="1" max="50"value="1"  placeholder="Količina ormana">
+        <input type="number" formControlName="kol_racunara" id="kolRacunara" nbInput min="1" max="50"value="1"  placeholder="Količina računara">
+        <input type="number" formControlName="kol_stolica_k" id="kolStolicaK" nbInput min="1" max="50"value="1"  placeholder="Količina stolica">
+        <input type="number" formControlName="kol_stolova_k" id="kolStolovaK" nbInput min="1" max="50"value="1"  placeholder="Količina stolova">
         <button type="submit" class="btn btn-primary">Kreiraj kancelariju</button>
       </form>
 

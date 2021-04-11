@@ -5,6 +5,7 @@ import {AdminServiceService} from '../services/admin-service.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {OperaterServiceService} from '../services/operater-service.service';
 import {first} from 'rxjs/operators';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-operater-radni-nalog',
@@ -26,18 +27,42 @@ export class OperaterRadniNalogComponent implements OnInit {
   stavkeSas: any = [];
   stavkaSas: any = [];
   stanja: any = [];
+
+  admin: any = [];
+  korisnik: any = [];
+  pogon: any = [];
   constructor(private router: Router, private operaterService: OperaterServiceService, private formBuilder: FormBuilder,
-              private modalService: NgbModal) { }
+              private modalService: NgbModal, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.ucitajRadneNaloge();
+    this.ucitajAdmina();
     this.ucitajPogone();
     this.ucitajKancelarije();
   }
 
   // tslint:disable-next-line:typedef
+  ucitajAdmina() {
+    this.authService.getUser(localStorage.getItem('currentuser').toString())
+      .pipe(first())
+      .subscribe((data: {}) => {
+          this.korisnik = data;
+          this.admin = this.korisnik.radnikRId;
+          this.pogon = this.korisnik.radnikRId.pogonPId;
+          this.operaterService.getRadneNalogePogon(this.pogon.pId)
+          .pipe(first())
+          .subscribe(data1 => {
+            this.radniNalozi = data1;
+          });
+          if (this.admin.radnikTip !== 'Operater') {
+            this.router.navigate(['/']);
+          }
+        }
+      );
+  }
+
+  // tslint:disable-next-line:typedef
   ucitajRadneNaloge() {
-    this.operaterService.getRadneNaloge()
+    this.operaterService.getRadneNalogePogon(this.pogon.pId)
       .pipe(first())
       .subscribe(data => {
         this.radniNalozi = data;

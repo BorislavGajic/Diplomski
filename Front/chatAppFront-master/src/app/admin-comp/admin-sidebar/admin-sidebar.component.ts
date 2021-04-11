@@ -15,10 +15,10 @@ export const ROUTES: RouteInfo[] = [
   { path: '/admin/materijalAdmin', title: 'Materijali',  icon: '', class: '' },
   { path: '/admin/radniNalogAdmin', title: 'Radni nalozi',  icon: '', class: '' },
   { path: '/admin/sastavnicaAdmin', title: 'Sastavnice',  icon: '', class: '' },
-  { path: '/admin/sektorPogonaAdmin', title: 'Sektor pogona',  icon: '', class: '' },
-  { path: '/admin/tipOsiguracaAdmin', title: 'Tip osiguraca',  icon: '', class: '' },
-  { path: '/admin/tipTestaAdmin', title: 'Tip testa',  icon: '', class: '' },
-  { path: '/admin/tipKontrolaAdmin', title: 'Tip kontrola',  icon: '', class: '' }
+  { path: '/admin/sektorPogonaAdmin', title: 'Sektori pogona',  icon: '', class: '' },
+  { path: '/admin/tipOsiguracaAdmin', title: 'Tip osigurača',  icon: '', class: '' },
+  { path: '/admin/tipTestaAdmin', title: 'Tipovi testa',  icon: '', class: '' },
+  { path: '/admin/tipKontrolaAdmin', title: 'Tipovi kontrola',  icon: '', class: '' }
 
 ];
 

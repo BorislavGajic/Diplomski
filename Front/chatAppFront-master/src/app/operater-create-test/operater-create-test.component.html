@@ -7,7 +7,7 @@
   <form [formGroup]="TestForm" (ngSubmit)="create()">
     <div>
       <mat-form-field >
-        <mat-label>Osigurac</mat-label>
+        <mat-label>Osigurač</mat-label>
         <mat-select formControlName="osigurac">
           <mat-option id="osigurac"  *ngFor="let osigurac of osiguraci" [value]="osigurac">{{osigurac.osId}}</mat-option>
         </mat-select>

@@ -17,6 +17,8 @@ export class OperaterOsiguracComponent implements OnInit {
   OsiguracForm: FormGroup;
 
   osigurac: any = [];
+  nazTos: string;
+  osId1: number;
   constructor(private router: Router, private operaterService: OperaterServiceService, private formBuilder: FormBuilder,
               private modalService: NgbModal) { }
 
@@ -111,6 +113,27 @@ export class OperaterOsiguracComponent implements OnInit {
     this.osigurac = osigurac;
     this.operaterService.settOsigurac(this.osigurac);
     this.router.navigate(['/izmenaOsiguraca']);
+  }
+  // tslint:disable-next-line:typedef
+  Search() {
+    if (this.nazTos !== '') {
+      this.osiguraci = this.osiguraci.filter( res => {
+        return res.tosId.nazTos.toLocaleLowerCase().match(this.nazTos.toLocaleLowerCase());
+      });
+    } else if (this.nazTos === '') {
+      this.ngOnInit();
+    }
+  }
+  // tslint:disable-next-line:typedef
+  Search2() {
+    if (this.osId1.toString() !== '') {
+      this.osiguraci = this.osiguraci.filter( res => {
+        // res.broj.toString.toLocaleLowerCase().match(this.broj.toString().toLocaleLowerCase());
+        return res.osId.toString().toLocaleLowerCase().match(this.osId1.toString().toLocaleLowerCase());
+      });
+    } else if (this.osId1.toString() === '') {
+      this.ngOnInit();
+    }
   }
 
 }

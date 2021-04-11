@@ -12,9 +12,9 @@
     <form [formGroup]="korisnikForm" (ngSubmit)="onSubmit()">
       <input type="text" formControlName="ime" class="form-control" id="ime" name="ime" placeholder="Ime">
       <input type="text" formControlName="prezime" class="form-control" id="prezime" name="ime" placeholder="Prezime">
-      <input type="text" formControlName="jmbg" class="form-control" id="jmbg" name="jmbg" placeholder="Jmbg">
-      <input type="text" formControlName="tekuciRacun" class="form-control" id="tekuciRacun" name="tekuciRacun" placeholder="Tekuci racun">
-      <input type="text" formControlName="korisnickoIme" class="form-control" id="korisnickoIme" name="korisnickoIme" placeholder="Korisnicko ime">
+      <input type="text" formControlName="jmbg" class="form-control" id="jmbg" name="jmbg" placeholder="JMBG">
+      <input type="text" formControlName="tekuciRacun" class="form-control" id="tekuciRacun" name="tekuciRacun" placeholder="Tekući račun">
+      <input type="text" formControlName="korisnickoIme" class="form-control" id="korisnickoIme" name="korisnickoIme" placeholder="Korisničko ime">
       <input type="text" formControlName="lozinka" class="form-control" id="lozinka" name="lozinka" placeholder="Lozinka">
 
       <div>
@@ -39,7 +39,7 @@
           <mat-form-field >
             <mat-label>Magacin</mat-label>
             <mat-select formControlName="magacinMId">
-              <mat-option id="magacinMId"  *ngFor="let mag of magacini" [value]="mag.mId">{{mag.mId}}</mat-option>
+              <mat-option id="magacinMId"  *ngFor="let mag of magacini" [value]="mag.mid">{{mag.mid}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

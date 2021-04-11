@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,5 +77,21 @@ public class Radni_nalogController {
     public ResponseEntity<Void> deleteRadniNalog(@PathVariable Integer id) {
         radni_nalogService.remove(id);
         return new ResponseEntity<>((HttpStatus.OK));
+    }
+
+    @GetMapping(value = "/pogon/{id}",produces = "application/json")
+    public ResponseEntity<List<Radni_nalog>> getRadniNalogsPogon(@PathVariable Integer id) {
+        List<Radni_nalog> radni_nalogs = radni_nalogService.findAll();
+        List<Radni_nalog> radni_nalogs1 = new ArrayList<Radni_nalog>();
+        if(radni_nalogs != null)
+        {
+            for(Radni_nalog rn : radni_nalogs){
+                if(rn.getPogonPId().getpId() == id){
+                    radni_nalogs1.add(rn);
+                }
+            }
+            return new ResponseEntity<>(radni_nalogs1, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(radni_nalogs1, HttpStatus.NOT_MODIFIED);
     }
 }

@@ -1,6 +1,9 @@
 <div class="panel-header panel-header-sm">
 </div>
 <html>
+<head>
+  <meta charset="UTF-8">
+</head>
 <body>
 <!-- header -->
 <nav class="navbar">
@@ -13,7 +16,14 @@
   <a class="mat-button" (click)="logout()">Logout</a>
 </nav>
 
-<h1>Svi osiguraci</h1>
+<h1>Svi osigurači</h1>
+
+<div class="modal-body">
+  <div class="card-body">
+    <input placeholder="Id osiguraca" [(ngModel)]="osId1" (input)="Search2()">
+  </div>
+</div>
+
 <div>
   <div class="table-responsive">
     <table class="table table-striped">
@@ -28,10 +38,10 @@
         Snaga
       </th>
       <th>
-        Tip osiguraca
+        Tip osigurača
       </th>
       <th>
-        Montaza
+        Montaža
       </th>
       <th>
         Rivet
@@ -49,10 +59,10 @@
         Magacin
       </th>
       <th>
-        Izmena
+        Brisanje
       </th>
       <th>
-        Brisanje
+        Izmena
       </th>
       </thead>
       <tbody>
@@ -72,9 +82,9 @@
 
           <td>
             <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obriši</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem (click)="delete(osigurac)">Obrisi</button>
+                <button ngbDropdownItem (click)="delete(osigurac)">Obriši</button>
               </div>
             </div>
           </td>
@@ -93,13 +103,13 @@
       </tbody>
     </table>
   </div>
-  <button class="btn btn-outline-primary" (click)="MakeVote(addVote1)">Novi osigurac</button>
+  <button class="btn btn-outline-primary" (click)="MakeVote(addVote1)">Novi osigurač</button>
 </div>
 
 
 <ng-template #addVote1 let-modal windowClass="modal-dialog">
   <div class="modal-header">
-    <h4 class="modal-title" class="text-right" id="modal-basic-title44">Novi osigurac</h4>
+    <h4 class="modal-title" class="text-right" id="modal-basic-title44">Novi osigurač</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -112,7 +122,7 @@
       <form [formGroup]="OsiguracForm" (ngSubmit)="create()">
         <input type="number" formControlName="maxNapon" id="maxNapon" nbInput min="1" max="240"value="1"  placeholder="Max napon">
         <input type="number" formControlName="snaga" id="snaga" nbInput min="1" max="100"value="1"  placeholder="Snaga osiguraca">
-        <button type="submit" class="btn btn-primary">Kreiraj osigurac</button>
+        <button type="submit" class="btn btn-primary">Kreiraj osigurač</button>
       </form>
 
     </div>

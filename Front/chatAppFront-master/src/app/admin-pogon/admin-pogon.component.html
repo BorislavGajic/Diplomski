@@ -22,16 +22,16 @@
         Id
       </th>
       <th>
-        Kolicina ormana
+        Količina ormana
       </th>
       <th>
-        Kolicina stolica
+        Količina stolica
       </th>
       <th>
-        Kolicina stolova
+        Količina stolova
       </th>
       <th>
-        Kolicina masina
+        Količina mašina
       </th>
       <th>
         Brisanje
@@ -48,9 +48,9 @@
 
           <td>
             <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obrisi</button>
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Obriši</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem (click)="delete(pogon)">Obrisi</button>
+                <button ngbDropdownItem (click)="delete(pogon)">Obriši</button>
               </div>
             </div>
           </td>
@@ -78,10 +78,10 @@
     <div class="card-body">
 
       <form [formGroup]="PogoniForm" (ngSubmit)="create()">
-        <input type="number" formControlName="kolOrmanaP" id="kolOrmanaP" nbInput min="1" max="500"value="1"  placeholder="Kolicina ormana">
-        <input type="number" formControlName="kolStolicaP" id="kolStolicaP" nbInput min="1" max="50"value="1"  placeholder="Kolicina stolica">
-        <input type="number" formControlName="kolStolovaP" id="kolStolovaP" nbInput min="1" max="50"value="1"  placeholder="Kolicina stolova">
-        <input type="number" formControlName="kolMasinaP" id="kolMasinaP" nbInput min="1" max="5000000"value="1"  placeholder="Kolicina masina">
+        <input type="number" formControlName="kolOrmanaP" id="kolOrmanaP" nbInput min="1" max="500"value="1"  placeholder="Količina ormana">
+        <input type="number" formControlName="kolStolicaP" id="kolStolicaP" nbInput min="1" max="50"value="1"  placeholder="Količina stolica">
+        <input type="number" formControlName="kolStolovaP" id="kolStolovaP" nbInput min="1" max="50"value="1"  placeholder="Količina stolova">
+        <input type="number" formControlName="kolMasinaP" id="kolMasinaP" nbInput min="1" max="5000000"value="1"  placeholder="Količina mašina">
         <button type="submit" class="btn btn-primary">Kreiraj pogon</button>
       </form>
 
